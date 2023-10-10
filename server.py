@@ -1,5 +1,23 @@
 import json
+
+from datetime import datetime
 from flask import Flask,render_template,request,redirect,flash,url_for
+
+
+class CompetitionNotFoundException(Exception):
+    flash_message = 'Competition not found.'
+
+
+class CompetitionPassedException(Exception):
+    flash_message = 'The competition has already passed.'
+
+
+class MaximumPlacesException(Exception):
+    flash_message = 'You can book a maximum of 12 athletes at once.'
+
+
+class NotEnoughPointsException(Exception):
+    flash_message = 'You do not have enough points to make this booking.'
 
 
 def loadClubs():
@@ -65,6 +83,17 @@ def purchasePlaces():
         competition = next((c for c in competitions if c['name'] == competition_name), None)
         club = next((c for c in clubs if c['name'] == club_name), None)
 
+        # Vérifier si la compétition existe
+        if competition is None:
+            raise CompetitionNotFoundException()
+
+        # Vérifier si la compétition est passée
+        competition_date = datetime.strptime(competition['date'], '%Y-%m-%d %H:%M:%S')
+        current_date = datetime.now()
+
+        if competition_date < current_date:
+            raise CompetitionPassedException()
+
         placesRequired = int(places_input)
 
         # Convertir club['points'] et competition['numberOfPlaces'] en entiers
@@ -85,7 +114,19 @@ def purchasePlaces():
 
         flash('Great-booking complete!')
         return render_template('welcome.html', club=club, competitions=competitions)
+
+    except CompetitionNotFoundException:
+        flash(CompetitionNotFoundException.flash_message, 'error')
+        return redirect(url_for('index'))
     
+    except CompetitionPassedException:
+        flash(CompetitionPassedException.flash_message, 'error')
+        return redirect(url_for('book', competition=competition_name, club=club_name))
+
+    except MaximumPlacesException:
+        flash(MaximumPlacesException.flash_message, 'error')
+        return redirect(url_for('book', competition=competition_name, club=club_name))
+
     except NotEnoughPointsException:
         flash(NotEnoughPointsException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))

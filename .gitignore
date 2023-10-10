@@ -2,6 +2,12 @@ bin
 include
 lib
 .Python
-tests/
 .envrc
 __pycache__
+**/__pycache__/
+*.pyc
+htmlcov/
+.coveragerc
+debug.log
+.vscode/
+env/

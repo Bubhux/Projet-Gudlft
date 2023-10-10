@@ -2,14 +2,6 @@ import json
 from flask import Flask,render_template,request,redirect,flash,url_for
 
 
-class MaximumPlacesException(Exception):
-    flash_message = 'You can book a maximum of 12 athletes at once.'
-
-
-class NotEnoughPointsException(Exception):
-    flash_message = 'You do not have enough points to make this booking.'
-
-
 def loadClubs():
     with open('clubs.json') as c:
          listOfClubs = json.load(c)['clubs']
@@ -75,10 +67,6 @@ def purchasePlaces():
 
         placesRequired = int(places_input)
 
-        # Vérifier si l'utilisateur a suffisamment de points (maximum 12 athlètes)
-        if placesRequired > 12:
-            raise MaximumPlacesException()
-
         # Convertir club['points'] et competition['numberOfPlaces'] en entiers
         club_points = int(club['points']) if club['points'] else 0
         competition_places = int(competition['numberOfPlaces']) if competition['numberOfPlaces'] else 0
@@ -97,10 +85,6 @@ def purchasePlaces():
 
         flash('Great-booking complete!')
         return render_template('welcome.html', club=club, competitions=competitions)
-
-    except MaximumPlacesException:
-        flash(MaximumPlacesException.flash_message, 'error')
-        return redirect(url_for('book', competition=competition_name, club=club_name))
     
     except NotEnoughPointsException:
         flash(NotEnoughPointsException.flash_message, 'error')

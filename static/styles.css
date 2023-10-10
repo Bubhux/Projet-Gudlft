@@ -1,0 +1,33 @@
+/* style.css */
+
+body {
+    background-color: rgb(102, 102, 102);
+}
+
+a {
+    color: rgb(255, 255, 255);
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.spacer {
+    margin-bottom: 10px;
+}

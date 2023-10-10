@@ -2,35 +2,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
     <title>Summary | GUDLFT Registration</title>
 </head>
-<body>
-        <h2>Welcome, {{club['email']}} </h2><a href="{{url_for('logout')}}">Logout</a>
 
-    {% with messages = get_flashed_messages()%}
-    {% if messages %}
-        <ul>
-       {% for message in messages %}
-            <li>{{message}}</li>
-        {% endfor %}
-       </ul>
-    {% endif%}
-    Points available: {{club['points']}}
+<body>
+    <h2>Welcome, {{club['email']}} - {{club['name']}}</h2><a href="{{ url_for('logout') }}">Logout</a>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{message}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <p>Points available: {{club['points']}}</p>
     <h3>Competitions:</h3>
     <ul>
-        {% for comp in competitions%}
+        {% for comp in competitions %}
         <li>
-            {{comp['name']}}<br />
-            Date: {{comp['date']}}</br>
+            {{comp['name']}}<br>
+            <div class="spacer"></div>
+            Date: {{comp['date']}}<br>
             Number of Places: {{comp['numberOfPlaces']}}
-            {%if comp['numberOfPlaces']|int >0%}
-            <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
-            {%endif%}
+            {% if comp['numberOfPlaces']|int > 0 %}
+            <a href="{{ url_for('book', competition=comp['name'], club=club['name']) }}">Book Places</a>
+            {% endif %}
         </li>
-        <hr />
+        <hr>
         {% endfor %}
     </ul>
-    {%endwith%}
+
+    <a href="{{url_for('index')}}">Back to homepage</a>
 
 </body>
 </html>

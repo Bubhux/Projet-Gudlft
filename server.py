@@ -1,7 +1,7 @@
 import json
 
 from datetime import datetime
-from flask import Flask,render_template,request,redirect,flash,url_for
+from flask import Flask, render_template, request, redirect, flash,url_for, session
 
 
 class CompetitionNotFoundException(Exception):
@@ -10,6 +10,14 @@ class CompetitionNotFoundException(Exception):
 
 class CompetitionPassedException(Exception):
     flash_message = 'The competition has already passed.'
+
+
+class CompetitionFullException(Exception):
+    flash_message = 'The competition is already full.'
+
+
+class InvalidPlacesException(Exception):
+    flash_message = 'Please enter a valid number for places.'
 
 
 class MaximumPlacesException(Exception):
@@ -42,6 +50,7 @@ clubs = loadClubs()
 def index():
     return render_template('index.html')
 
+
 @app.route('/showSummary', methods=['GET', 'POST'])
 def showSummary():
     if request.method == 'POST':
@@ -62,14 +71,15 @@ def showSummary():
 
 
 @app.route('/book/<competition>/<club>')
-def book(competition,club):
-    foundClub = [c for c in clubs if c['name'] == club][0]
-    foundCompetition = [c for c in competitions if c['name'] == competition][0]
-    if foundClub and foundCompetition:
-        return render_template('booking.html',club=foundClub,competition=foundCompetition)
-    else:
-        flash("Something went wrong-please try again")
-        return render_template('welcome.html', club=club, competitions=competitions)
+def book(competition, club):
+    try:
+        foundClub = [c for c in clubs if c['name'] == club][0]
+        foundCompetition = [c for c in competitions if c['name'] == competition][0]
+
+        return render_template('booking.html', club=foundClub, competition=foundCompetition)
+    except IndexError:
+        flash("The competition or club does not exist. Please try again.", 'error')
+        return redirect(url_for('showSummary'))
 
 
 @app.route('/purchasePlaces', methods=['POST'])
@@ -93,6 +103,14 @@ def purchasePlaces():
 
         if competition_date < current_date:
             raise CompetitionPassedException()
+
+        # Vérifier si la compétition est complète
+        if int(competition['numberOfPlaces']) <= 0:
+            raise CompetitionFullException()
+
+        # Vérifier si le champ "places" est vide, n'est pas un nombre ou est un nombre négatif
+        if not places_input or not places_input.isdigit() or int(places_input) <= 0:
+            raise InvalidPlacesException()
 
         placesRequired = int(places_input)
 
@@ -118,18 +136,32 @@ def purchasePlaces():
     except CompetitionNotFoundException:
         flash(CompetitionNotFoundException.flash_message, 'error')
         return redirect(url_for('index'))
-    
+
     except CompetitionPassedException:
         flash(CompetitionPassedException.flash_message, 'error')
+        return redirect(url_for('book', competition=competition_name, club=club_name))
+
+    except CompetitionFullException:
+        flash(CompetitionFullException.flash_message, 'error')
+        return redirect(url_for('book', competition=competition_name, club=club_name))
+
+    except InvalidPlacesException:
+        flash(InvalidPlacesException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))
 
     except MaximumPlacesException:
         flash(MaximumPlacesException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))
-
+    
     except NotEnoughPointsException:
         flash(NotEnoughPointsException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))
+
+
+@app.route('/displayPointsClubs')
+def display_points_clubs():
+    clubs_list = sorted(clubs, key=lambda club: club['name'])
+    return render_template('points_table_clubs.html', clubs=clubs_list)
 
 
 @app.route('/logout')

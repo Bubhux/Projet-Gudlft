@@ -132,9 +132,6 @@ def purchasePlaces():
         return redirect(url_for('book', competition=competition_name, club=club_name))
 
 
-# TODO: Add route for points display
-
-
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))

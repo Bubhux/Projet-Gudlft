@@ -2,16 +2,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUDLFT Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <title>GUDLFT | Registration</title>
 </head>
+
 <body>
-    <h1>Welcome to the GUDLFT Registration Portal!</h1>
-    Please enter your secretary email to continue:
+    <h1>Welcome to the GUDLFT Registration Portal !</h1>
+
+    <hr>
+    Please enter your secretary email to continue :
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul style="list-style-type: none">
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{message}}</li>
+            {% endfor %}
+            </ul>
+        {% endif%}
+        {% endwith %}
+
     <form action="showSummary" method="post">
         <label for="email">Email:</label>
         <input type="email" name="email" id=""/>
         <button type="submit">Enter</button>
     </form>
+    <hr>
+
+    <a href="{{url_for('display_points_clubs')}}">View clubs points</a>
+
 </body>
 </html>
-

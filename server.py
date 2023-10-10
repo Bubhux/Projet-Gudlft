@@ -2,10 +2,6 @@ import json
 from flask import Flask,render_template,request,redirect,flash,url_for
 
 
-class NotEnoughPointsException(Exception):
-    flash_message = 'You do not have enough points to make this booking.'
-
-
 def loadClubs():
     with open('clubs.json') as c:
          listOfClubs = json.load(c)['clubs']

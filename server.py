@@ -96,10 +96,6 @@ def purchasePlaces():
 
         placesRequired = int(places_input)
 
-        # Vérifier si l'utilisateur a suffisamment de points (maximum 12 athlètes)
-        if placesRequired > 12:
-            raise MaximumPlacesException()
-
         # Convertir club['points'] et competition['numberOfPlaces'] en entiers
         club_points = int(club['points']) if club['points'] else 0
         competition_places = int(competition['numberOfPlaces']) if competition['numberOfPlaces'] else 0

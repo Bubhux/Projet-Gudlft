@@ -30,6 +30,42 @@ class NotEnoughPointsException(Exception):
     flash_message = 'You do not have enough points to make this booking.'
 
 
+clubs_load_message = None
+competitions_load_message = None
+
+def load_mock_clubs():
+    return [
+        {
+            "name": "Simply Lift",
+            "email": "john@simplylift.co",
+            "points": "13"
+        },
+        {
+            "name": "Iron Temple",
+            "email": "admin@irontemple.com",
+            "points": "4"
+        },
+        {
+            "name": "She Lifts",
+            "email": "kate@shelifts.co.uk",
+            "points": "12"
+        }
+    ]
+
+def load_mock_competitions():
+    return [
+        {
+            "name": "Spring Festival",
+            "date": "2024-03-27 10:00:00",
+            "numberOfPlaces": "25"
+        },
+        {
+            "name": "Fall Classic",
+            "date": "2020-10-22 13:30:00",
+            "numberOfPlaces": "13"
+        }
+    ]
+
 def loadClubs():
     global clubs_load_message
     filename = 'clubs.json'
@@ -49,9 +85,21 @@ def loadClubs():
 
 
 def loadCompetitions():
-    with open('competitions.json') as comps:
-         listOfCompetitions = json.load(comps)['competitions']
-         return listOfCompetitions
+    global competitions_load_message
+    filename = 'competitions.json'
+    if os.environ.get('FLASK_ENV') == 'test':
+        competitions_load_message = "Succes Mock data loaded for competitions."
+        return load_mock_competitions()
+    try:
+        with open(filename) as comps:
+            listOfCompetitions = json.load(comps)['competitions']
+            competitions_load_message = f"Succes Database loaded for competitions. {len(listOfCompetitions)} competitions loaded from '{filename}'"
+            app.logger.info(competitions_load_message)
+            return listOfCompetitions
+    except FileNotFoundError:
+        competitions_load_message = f"Failed to load the competitions database. '{filename}' not found."
+        app.logger.error(competitions_load_message)
+        return None
 
 
 app = Flask(__name__)
@@ -64,11 +112,16 @@ clubs = loadClubs()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    clubs = loadClubs()
+    competitions = loadCompetitions()
+    return render_template('index.html', clubs_load_message=clubs_load_message, competitions_load_message=competitions_load_message)
 
 
 @app.route('/showSummary', methods=['GET', 'POST'])
 def showSummary():
+    clubs = loadClubs()
+    competitions = loadCompetitions()
+
     if request.method == 'POST':
         try:
             club = [club for club in clubs if club['email'] == request.form['email']][0]
@@ -88,6 +141,9 @@ def showSummary():
 
 @app.route('/book/<competition>/<club>')
 def book(competition, club):
+    clubs = loadClubs()
+    competitions = loadCompetitions()
+
     try:
         foundClub = [c for c in clubs if c['name'] == club][0]
         foundCompetition = [c for c in competitions if c['name'] == competition][0]
@@ -100,35 +156,41 @@ def book(competition, club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
+    clubs = loadClubs()
+    competitions = loadCompetitions()
+
     try:
         competition_name = request.form['competition']
         club_name = request.form['club']
         places_input = request.form['places']
 
-        # Rechercher la compétition et le club dans la liste des compétitions et des clubs
+        # Recherche la compétition et le club dans la liste des compétitions et des clubs
         competition = next((c for c in competitions if c['name'] == competition_name), None)
         club = next((c for c in clubs if c['name'] == club_name), None)
 
-        # Vérifier si la compétition existe
+        # Vérifie si la compétition existe
         if competition is None:
             raise CompetitionNotFoundException()
 
-        # Vérifier si la compétition est passée
+        # Vérifie si la compétition est passée
         competition_date = datetime.strptime(competition['date'], '%Y-%m-%d %H:%M:%S')
         current_date = datetime.now()
 
         if competition_date < current_date:
             raise CompetitionPassedException()
 
-        # Vérifier si la compétition est complète
+        # Vérifie si la compétition est complète
         if int(competition['numberOfPlaces']) <= 0:
             raise CompetitionFullException()
 
-        # Vérifier si le champ "places" est vide, n'est pas un nombre ou est un nombre négatif
+        # Vérifie si le champ "places" est vide, n'est pas un nombre ou est un nombre négatif
         if not places_input or not places_input.isdigit() or int(places_input) <= 0:
             raise InvalidPlacesException()
 
         placesRequired = int(places_input)
+
+
+        # Convertie club['points'] et competition['numberOfPlaces'] en entiers
 
 
         # Vérifier si l'utilisateur a suffisamment de points (maximum 12 athlètes)
@@ -137,14 +199,19 @@ def purchasePlaces():
 
 
         # Convertir club['points'] et competition['numberOfPlaces'] en entiers
+
         club_points = int(club['points']) if club['points'] else 0
         competition_places = int(competition['numberOfPlaces']) if competition['numberOfPlaces'] else 0
 
-        # Vérifier si l'utilisateur a suffisamment de points (1 point par inscription)
+        # Vérifie si l'utilisateur a suffisamment de points (1 point par inscription)
         if club_points < placesRequired:
             raise NotEnoughPointsException()
 
-        # Effectuer la réservation
+        # Vérifie si l'utilisateur tente de réserver plus de 12 athlètes
+        if placesRequired > 12:
+            raise MaximumPlacesException()
+
+        # Effectue la réservation
         competition_places -= placesRequired
         club_points -= placesRequired
 
@@ -174,7 +241,7 @@ def purchasePlaces():
     except MaximumPlacesException:
         flash(MaximumPlacesException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))
-    
+
     except NotEnoughPointsException:
         flash(NotEnoughPointsException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))

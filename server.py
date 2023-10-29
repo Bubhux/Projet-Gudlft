@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Application d'Inscription GUDLFT
 Cette application Flask sert de portail d'inscription pour GUDLFT.
@@ -5,6 +6,8 @@ Elle permet aux utilisateurs de consulter et de réserver des athlètes pour des
 Elle charge les données des clubs et des compétitions à partir de fichiers JSON et fournit diverses routes pour interagir avec l'application.
 """
 
+=======
+>>>>>>> 1ff0293d6d1695bf7193cdd724dcf2332b1f5964
 import os
 import json
 import logging
@@ -37,11 +40,17 @@ class NotEnoughPointsException(Exception):
     flash_message = 'You do not have enough points to make this booking.'
 
 
+<<<<<<< HEAD
 # Variables globales pour stocker les messages de chargement
 clubs_load_message = None
 competitions_load_message = None
 
 
+=======
+clubs_load_message = None
+competitions_load_message = None
+
+>>>>>>> 1ff0293d6d1695bf7193cdd724dcf2332b1f5964
 def load_mock_clubs():
     return [
         {
@@ -61,7 +70,10 @@ def load_mock_clubs():
         }
     ]
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ff0293d6d1695bf7193cdd724dcf2332b1f5964
 def load_mock_competitions():
     return [
         {
@@ -76,7 +88,10 @@ def load_mock_competitions():
         }
     ]
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ff0293d6d1695bf7193cdd724dcf2332b1f5964
 def loadClubs():
     global clubs_load_message
     filename = 'clubs.json'
@@ -117,11 +132,16 @@ def loadCompetitions():
 app = Flask(__name__)
 app.secret_key = 'something_special'
 
+<<<<<<< HEAD
 # Configuration de la journalisation
 app.logger.setLevel(logging.INFO)
 
 # Chargement des données des compétitions et des clubs depuis des fichiers JSON.
 # Ces variables sont globales et accessibles depuis l'ensemble de l'application.
+=======
+app.logger.setLevel(logging.INFO)
+
+>>>>>>> 1ff0293d6d1695bf7193cdd724dcf2332b1f5964
 competitions = loadCompetitions()
 clubs = loadClubs()
 
@@ -205,7 +225,21 @@ def purchasePlaces():
 
         placesRequired = int(places_input)
 
+<<<<<<< HEAD
         # Convertie club['points'] et competition['numberOfPlaces'] en entiers
+=======
+
+        # Convertie club['points'] et competition['numberOfPlaces'] en entiers
+
+
+        # Vérifier si l'utilisateur a suffisamment de points (maximum 12 athlètes)
+        if placesRequired > 12:
+            raise MaximumPlacesException()
+
+
+        # Convertir club['points'] et competition['numberOfPlaces'] en entiers
+
+>>>>>>> 1ff0293d6d1695bf7193cdd724dcf2332b1f5964
         club_points = int(club['points']) if club['points'] else 0
         competition_places = int(competition['numberOfPlaces']) if competition['numberOfPlaces'] else 0
 
@@ -261,4 +295,8 @@ def display_points_clubs():
 
 @app.route('/logout')
 def logout():
+
     return redirect(url_for('index'))
+
+    return redirect(url_for('index'))
+

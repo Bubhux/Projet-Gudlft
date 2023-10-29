@@ -49,9 +49,21 @@ def loadClubs():
 
 
 def loadCompetitions():
-    with open('competitions.json') as comps:
-         listOfCompetitions = json.load(comps)['competitions']
-         return listOfCompetitions
+    global competitions_load_message
+    filename = 'competitions.json'
+    if os.environ.get('FLASK_ENV') == 'test':
+        competitions_load_message = "Succes Mock data loaded for competitions."
+        return load_mock_competitions()
+    try:
+        with open(filename) as comps:
+            listOfCompetitions = json.load(comps)['competitions']
+            competitions_load_message = f"Succes Database loaded for competitions. {len(listOfCompetitions)} competitions loaded from '{filename}'"
+            app.logger.info(competitions_load_message)
+            return listOfCompetitions
+    except FileNotFoundError:
+        competitions_load_message = f"Failed to load the competitions database. '{filename}' not found."
+        app.logger.error(competitions_load_message)
+        return None
 
 
 app = Flask(__name__)

@@ -207,7 +207,7 @@ tests\unitary_tests\test_server_login.py ......                                 
 
 #### Tests unitaires   
 - Les tests unitaires sont générés et exécutés grâce au module [**Pytest**](https://docs.pytest.org/).   
-- Ils sont situés dans le dossier **tests/unitary_tests/** &rarr; ([unitary_tests](tests/unitary_tests)).   
+- Ils sont situés dans le dossier ``tests/unitary_tests/`` &rarr; ([unitary_tests](tests/unitary_tests)).   
   - ``test_server_book.py``   
   - ``test_server_exception.py``   
   - ``test_server_loading_json.py``   
@@ -220,7 +220,7 @@ tests\unitary_tests\test_server_login.py ......                                 
 
 #### Tests d'intégrations   
 - Les tests d'intégrations sont générés et exécutés grâce au module [**Pytest**](https://docs.pytest.org/).   
-- Ils sont situés dans le dossier **tests/integration_tests/** &rarr; ([integration_tests](tests/integration_tests)).   
+- Ils sont situés dans le dossier ``tests/integration_tests/`` &rarr; ([integration_tests](tests/integration_tests)).   
   - ``test_server_points_table.py``   
   - ``test_server_purchase_places.py``   
 
@@ -231,7 +231,7 @@ tests\unitary_tests\test_server_login.py ......                                 
 
 #### Tests fonctionels   
 - Les tests fonctionels sont générés et exécutés grâce au module [**Selenium**](https://selenium-python.readthedocs.io/).   
-- Ils sont situés dans le dossier **tests/functionnal_tests/** &rarr; ([functional_tests](tests/functional_tests/)).   
+- Ils sont situés dans le dossier ``tests/functionnal_tests/`` &rarr; ([functional_tests](tests/functional_tests/)).   
   - ``test_server_functional.py``   
 
 Les tests vérifient le fonctionnement du serveur, la navigation sur les pages, la saisie de données, et la validation de l'affichage.   

@@ -304,6 +304,8 @@ Sur cette page, vous devez préciser :
 
 **Rapport Locust**   
 
+![Rapport Locust](static/pictures/locust_report.png/)   
+
 |Type    |Name                        | # reqs|     # fails |    Avg|    Min|    Max|   Med |   req/s| failures/s|
 |--------|----------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------|
 |GET     |.index                      |     10|    0(0.00%) |     79|     23|    123|    62 |    0.30|       0.00|

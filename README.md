@@ -296,7 +296,7 @@ Sur cette page, vous devez préciser :
 
 - **Number of total users to simulate** : le nombre total d'utilisateurs à simuler.   
 - **Spawn rate** : le taux de création d'utilisateurs, il correspond au nombre d’utilisateurs créés par seconde jusqu’à atteindre le nombre total d’utilisateurs.   
-- **Host** : l’adresse de l'application, dans notre cas ``http://127.0.0.1:5000/`` l’application est lancée sur le localhost.   
+- **Host** : l’adresse de l'application, dans notre cas http://127.0.0.1:5000/ l’application est lancée sur le localhost.   
 
 **Page de connexion Locust**   
 

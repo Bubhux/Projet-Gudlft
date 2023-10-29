@@ -283,7 +283,7 @@ Chaque méthode de test est conçue pour tester un aspect spécifique de l'appli
 #### Tests de performances avec Locust   
 - Les tests de performances sont générés et exécutés grâce au module [**Locust**](https://locust.io/).   
 - Ils sont situés dans le dossier ``tests/performance_tests/`` &rarr; ([performance_tests](tests/performance_tests/)).   
-  - locustfile.py   
+  - ``locustfile.py``   
 
 - Lancer le serveur de test de performance :   
 ```bash

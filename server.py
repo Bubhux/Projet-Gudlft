@@ -120,49 +120,52 @@ def book(competition, club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
+    clubs = loadClubs()
+    competitions = loadCompetitions()
+
     try:
         competition_name = request.form['competition']
         club_name = request.form['club']
         places_input = request.form['places']
 
-        # Rechercher la compétition et le club dans la liste des compétitions et des clubs
+        # Recherche la compétition et le club dans la liste des compétitions et des clubs
         competition = next((c for c in competitions if c['name'] == competition_name), None)
         club = next((c for c in clubs if c['name'] == club_name), None)
 
-        # Vérifier si la compétition existe
+        # Vérifie si la compétition existe
         if competition is None:
             raise CompetitionNotFoundException()
 
-        # Vérifier si la compétition est passée
+        # Vérifie si la compétition est passée
         competition_date = datetime.strptime(competition['date'], '%Y-%m-%d %H:%M:%S')
         current_date = datetime.now()
 
         if competition_date < current_date:
             raise CompetitionPassedException()
 
-        # Vérifier si la compétition est complète
+        # Vérifie si la compétition est complète
         if int(competition['numberOfPlaces']) <= 0:
             raise CompetitionFullException()
 
-        # Vérifier si le champ "places" est vide, n'est pas un nombre ou est un nombre négatif
+        # Vérifie si le champ "places" est vide, n'est pas un nombre ou est un nombre négatif
         if not places_input or not places_input.isdigit() or int(places_input) <= 0:
             raise InvalidPlacesException()
 
         placesRequired = int(places_input)
 
-        # Vérifier si l'utilisateur a suffisamment de points (maximum 12 athlètes)
-        if placesRequired > 12:
-            raise MaximumPlacesException()
-
-        # Convertir club['points'] et competition['numberOfPlaces'] en entiers
+        # Convertie club['points'] et competition['numberOfPlaces'] en entiers
         club_points = int(club['points']) if club['points'] else 0
         competition_places = int(competition['numberOfPlaces']) if competition['numberOfPlaces'] else 0
 
-        # Vérifier si l'utilisateur a suffisamment de points (1 point par inscription)
+        # Vérifie si l'utilisateur a suffisamment de points (1 point par inscription)
         if club_points < placesRequired:
             raise NotEnoughPointsException()
 
-        # Effectuer la réservation
+        # Vérifie si l'utilisateur tente de réserver plus de 12 athlètes
+        if placesRequired > 12:
+            raise MaximumPlacesException()
+
+        # Effectue la réservation
         competition_places -= placesRequired
         club_points -= placesRequired
 
@@ -192,7 +195,7 @@ def purchasePlaces():
     except MaximumPlacesException:
         flash(MaximumPlacesException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))
-    
+
     except NotEnoughPointsException:
         flash(NotEnoughPointsException.flash_message, 'error')
         return redirect(url_for('book', competition=competition_name, club=club_name))

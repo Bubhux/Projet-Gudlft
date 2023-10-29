@@ -83,6 +83,9 @@ def index():
 
 @app.route('/showSummary', methods=['GET', 'POST'])
 def showSummary():
+    clubs = loadClubs()
+    competitions = loadCompetitions()
+
     if request.method == 'POST':
         try:
             club = [club for club in clubs if club['email'] == request.form['email']][0]

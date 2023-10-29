@@ -289,7 +289,7 @@ Chaque méthode de test est conçue pour tester un aspect spécifique de l'appli
 ```bash
 $ locust -f tests\performance_tests\locustfile.py
 ```
-- Se rendre sur l'adresse: [http://localhost:8089/](html://localhost:8089/).   
+- Se rendre sur l'adresse : [http://localhost:8089/](http://localhost:8089/)   
 - Choisir les options et lancer les tests.   
 
 Sur cette page, vous devez préciser :   

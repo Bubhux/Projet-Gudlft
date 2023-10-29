@@ -1,4 +1,6 @@
+import os
 import json
+import logging
 
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash,url_for, session
@@ -29,9 +31,21 @@ class NotEnoughPointsException(Exception):
 
 
 def loadClubs():
-    with open('clubs.json') as c:
-         listOfClubs = json.load(c)['clubs']
-         return listOfClubs
+    global clubs_load_message
+    filename = 'clubs.json'
+    if os.environ.get('FLASK_ENV') == 'test':
+        clubs_load_message = "Succes Mock data loaded for clubs."
+        return load_mock_clubs()
+    try:
+        with open(filename) as c:
+            listOfClubs = json.load(c)['clubs']
+            clubs_load_message = f"Succes Database loaded for clubs. {len(listOfClubs)} clubs loaded from '{filename}'"
+            app.logger.info(clubs_load_message)
+            return listOfClubs
+    except FileNotFoundError:
+        clubs_load_message = f"Failed to load the clubs database. '{filename}' not found."
+        app.logger.error(clubs_load_message)
+        return None
 
 
 def loadCompetitions():
@@ -42,6 +56,8 @@ def loadCompetitions():
 
 app = Flask(__name__)
 app.secret_key = 'something_special'
+
+app.logger.setLevel(logging.INFO)
 
 competitions = loadCompetitions()
 clubs = loadClubs()
@@ -114,6 +130,12 @@ def purchasePlaces():
 
         placesRequired = int(places_input)
 
+
+        # Vérifier si l'utilisateur a suffisamment de points (maximum 12 athlètes)
+        if placesRequired > 12:
+            raise MaximumPlacesException()
+
+
         # Convertir club['points'] et competition['numberOfPlaces'] en entiers
         club_points = int(club['points']) if club['points'] else 0
         competition_places = int(competition['numberOfPlaces']) if competition['numberOfPlaces'] else 0
@@ -166,4 +188,8 @@ def display_points_clubs():
 
 @app.route('/logout')
 def logout():
+
     return redirect(url_for('index'))
+
+    return redirect(url_for('index'))
+

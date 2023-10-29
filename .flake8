@@ -1,0 +1,4 @@
+[flake8]
+exclude = env, .git, .gitignore, static, **/templates/
+max-line-length = 160
+ignore = E265, F841, F401, F811

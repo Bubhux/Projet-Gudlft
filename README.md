@@ -149,7 +149,7 @@ $ pip install -r requirements.txt
 
 ### Exécution de l'application   
 
-##### Utilisation   
+#### Utilisation   
 
 Lancement du serveur [**Flask**](https://flask.palletsprojects.com/en/3.0.x/).   
 - Placez-vous avec le terminal dans le dossier principal.   
@@ -189,15 +189,15 @@ Se rendre à l'adresse. &rarr; http://127.0.0.1:5000/
 $ pytest -v
 ```
 ```bash
-tests\functional_tests\test_server_functional.py                                                                   [ 12%]
-tests\integration_tests\test_server_points_table.py .                                                              [ 15%]
-tests\integration_tests\test_server_purchase_places.py .............                                               [ 47%]
-tests\unitary_tests\test_server_book.py ..                                                                         [ 52%]
-tests\unitary_tests\test_server_execption.py ......                                                                [ 67%]
-tests\unitary_tests\test_server_loading_json.py .......                                                            [ 85%]
-tests\unitary_tests\test_server_login.py ......                                                                    [100%]
+tests\functional_tests\test_server_functional.py                                                         [ 12%]
+tests\integration_tests\test_server_points_table.py .                                                    [ 15%]
+tests\integration_tests\test_server_purchase_places.py .............                                     [ 47%]
+tests\unitary_tests\test_server_book.py ..                                                               [ 52%]
+tests\unitary_tests\test_server_execption.py ......                                                      [ 67%]
+tests\unitary_tests\test_server_loading_json.py .......                                                  [ 85%]
+tests\unitary_tests\test_server_login.py ......                                                          [100%]
 
-============================================= 40 passed in 85.75s (0:01:25) =============================================
+======================================== 40 passed in 85.75s (0:01:25) ========================================
 ``` 
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -245,12 +245,14 @@ Chaque méthode de test est conçue pour tester un aspect spécifique de l'appli
 
 ```python
 2. def test_display_points_table_clubs():
-# Vérifie que la page "View clubs points" s'affiche correctement et affiche le message "Points available by clubs". 
+# Vérifie que la page "View clubs points" s'affiche correctement
+# et affiche le message "Points available by clubs". 
 ```  
 
 ```python
 3. def test_login_user():
-# Test le processus de connexion de l'utilisateur et vérifie que la page de bienvenue affiche l'adresse e-mail de l'utilisateur connecté.   
+# Test le processus de connexion de l'utilisateur
+# et vérifie que la page de bienvenue affiche l'adresse e-mail de l'utilisateur connecté.   
 ```
 
 ```python
@@ -262,8 +264,9 @@ Chaque méthode de test est conçue pour tester un aspect spécifique de l'appli
 ```python
 5. def test_book_places_reservation_success():
 # Teste le processus de réservation de places pour une compétition.
-# Il simule la sélection de places, la réservation et vérifie le message de confirmation. Ensuite, le test
-# vérifie que les points disponibles sont mis à jour conformément à la réservation effectuée et que le nombre
+# Il simule la sélection de places, la réservation et vérifie le message de confirmation.
+# Ensuite, le test vérifie que les points disponibles sont mis à jour
+# conformément à la réservation effectuée et que le nombre
 # de places disponibles pour cette compétition est correctement réduit.   
 ```
 
@@ -297,40 +300,40 @@ Sur cette page, vous devez préciser :
 
 **Page de connexion Locust**   
 
-![Page de connexion](Gudlft/static/pictures/locust_homepage.png/)   
+![Page de connexion](static/pictures/locust_homepage.png/)   
 
 **Rapport Locust**   
 
-Type     Name                        | # reqs|     # fails |    Avg|    Min|    Max|   Med |   req/s| failures/s
---------|----------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
-GET      .index                      |     10|    0(0.00%) |     79|     23|    123|    62 |    0.30|       0.00
-POST     .showSummary                |     10|    0(0.00%) |     47|     23|    116|    33 |    0.30|       0.00
-GET      //                          |    559|    0(0.00%) |    120|     13|    220|   120 |   16.63|       0.00
-GET      //logout                    |    528|    0(0.00%) |    118|     14|    218|   120 |   15.71|       0.00
-POST     //purchasePlaces            |    585|    0(0.00%) |     63|      7|    164|    63 |   17.40|       0.00
-POST     //showSummary               |    635|    0(0.00%) |     63|      8|    160|    63 |   18.89|       0.00
-GET      /logout                     |     10|    0(0.00%) |    101|     84|    109|   109 |    0.30|       0.00
-GET      book                        |    545|    0(0.00%) |     60|      6|    163|    61 |   16.21|       0.00
-GET      display_points_clubs        |    578|    0(0.00%) |     60|      5|    161|    61 |   17.19|       0.00
+|Type    |Name                        | # reqs|     # fails |    Avg|    Min|    Max|   Med |   req/s| failures/s|
+|--------|----------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------|
+|GET     |.index                      |     10|    0(0.00%) |     79|     23|    123|    62 |    0.30|       0.00|
+|POST    |.showSummary                |     10|    0(0.00%) |     47|     23|    116|    33 |    0.30|       0.00|
+|GET     |//                          |    559|    0(0.00%) |    120|     13|    220|   120 |   16.63|       0.00|
+|GET     |//logout                    |    528|    0(0.00%) |    118|     14|    218|   120 |   15.71|       0.00|
+|POST    |//purchasePlaces            |    585|    0(0.00%) |     63|      7|    164|    63 |   17.40|       0.00|
+|POST    |//showSummary               |    635|    0(0.00%) |     63|      8|    160|    63 |   18.89|       0.00|
+|GET     |/logout                     |     10|    0(0.00%) |    101|     84|    109|   109 |    0.30|       0.00|
+|GET     |book                        |    545|    0(0.00%) |     60|      6|    163|    61 |   16.21|       0.00|
+|GET     |display_points_clubs        |    578|    0(0.00%) |     60|      5|    161|    61 |   17.19|       0.00|
 
-         Aggregated           |   3460  | 0(0.00%)  |  80   |  5   |  220  |  69   |  102.93|  0.00
+    Aggregated                        3460     0(0.00%)    80      5      220    69       102.93    0.00
 
 
 
 Response time percentiles (approximated)
-Type     Name                        |     50%|   66%|   75%|   80%|   90%|   95%|   98%|   99%| 99.9%|99.99%|  100%|# reqs
---------|----------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
-GET      .index                      |      80|   100|   120|   120|   120|   120|   120|   120|   120|   120|   120|    10
-POST     .showSummary                |      42|    47|    55|    65|   120|   120|   120|   120|   120|   120|   120|    10
-GET      //                          |     120|   130|   140|   140|   160|   170|   190|   200|   220|   220|   220|   559
-GET      //logout                    |     120|   130|   140|   140|   160|   180|   200|   200|   220|   220|   220|   528
-POST     //purchasePlaces            |      63|    69|    73|    75|    84|    92|   100|   120|   160|   160|   160|   585
-POST     //showSummary               |      63|    69|    73|    76|    87|    94|   100|   120|   160|   160|   160|   635
-GET      /logout                     |     110|   110|   110|   110|   110|   110|   110|   110|   110|   110|   110|    10
-GET      book                        |      61|    66|    71|    73|    82|    89|   100|   110|   160|   160|   160|   545
-GET      display_points_clubs        |      61|    67|    71|    74|    83|    93|   100|   110|   160|   160|   160|   578
+|Type    |Name                        |     50%|   66%|   75%|   80%|   90%|   95%|   98%|   99%| 99.9%|99.99%|  100%|# reqs|
+|--------|----------------------------|--------|------|------|------|------|------|------|------|------|------|------|------|
+|GET     |.index                      |      80|   100|   120|   120|   120|   120|   120|   120|   120|   120|   120|    10|
+|POST    |.showSummary                |      42|    47|    55|    65|   120|   120|   120|   120|   120|   120|   120|    10|
+|GET     |//                          |     120|   130|   140|   140|   160|   170|   190|   200|   220|   220|   220|   559|
+|GET     |//logout                    |     120|   130|   140|   140|   160|   180|   200|   200|   220|   220|   220|   528|
+|POST    |//purchasePlaces            |      63|    69|    73|    75|    84|    92|   100|   120|   160|   160|   160|   585|
+|POST    |//showSummary               |      63|    69|    73|    76|    87|    94|   100|   120|   160|   160|   160|   635|
+|GET     |/logout                     |     110|   110|   110|   110|   110|   110|   110|   110|   110|   110|   110|    10|
+|GET     |book                        |      61|    66|    71|    73|    82|    89|   100|   110|   160|   160|   160|   545|
+|GET     |display_points_clubs        |      61|    67|    71|    74|    83|    93|   100|   110|   160|   160|   160|   578|
 
-         Aggregated           |  69   |  85   | 100   | 110   | 130   | 150   |  170  |  190  |  220    | 220     |  220    | 3460
+        |Aggregated           |  69   |  85   | 100   | 110   | 130   | 150   |  170  |  190  |  220    | 220     |  220    | 3460
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -346,15 +349,15 @@ GET      display_points_clubs        |      61|    67|    71|    74|    83|    9
 $ pytest --cov=.
 ```
 ```bash
-tests\functional_tests\test_server_functional.py                                                                   [ 12%]
-tests\integration_tests\test_server_points_table.py .                                                              [ 15%]
-tests\integration_tests\test_server_purchase_places.py .............                                               [ 47%]
-tests\unitary_tests\test_server_book.py ..                                                                         [ 52%]
-tests\unitary_tests\test_server_execption.py ......                                                                [ 67%]
-tests\unitary_tests\test_server_loading_json.py .......                                                            [ 85%]
-tests\unitary_tests\test_server_login.py ......                                                                    [100%]
+tests\functional_tests\test_server_functional.py                                                         [ 12%]
+tests\integration_tests\test_server_points_table.py .                                                    [ 15%]
+tests\integration_tests\test_server_purchase_places.py .............                                     [ 47%]
+tests\unitary_tests\test_server_book.py ..                                                               [ 52%]
+tests\unitary_tests\test_server_execption.py ......                                                      [ 67%]
+tests\unitary_tests\test_server_loading_json.py .......                                                  [ 85%]
+tests\unitary_tests\test_server_login.py ......                                                          [100%]
 
-============================================= 40 passed in 85.75s (0:01:25) =============================================
+======================================== 40 passed in 85.75s (0:01:25) ========================================
 
 ----------- coverage: platform win32, python 3.7.2-final-0 -----------
 Name        Stmts   Miss  Cover

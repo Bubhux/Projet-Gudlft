@@ -189,13 +189,13 @@ Se rendre à l'adresse. &rarr; http://127.0.0.1:5000/
 $ pytest -v
 ```
 ```bash
-tests\functional_tests\test_server_functional.py                                             [ 12%]
-tests\integration_tests\test_server_points_table.py .                                        [ 15%]
-tests\integration_tests\test_server_purchase_places.py .............                         [ 47%]
-tests\unitary_tests\test_server_book.py ..                                                   [ 52%]
-tests\unitary_tests\test_server_execption.py ......                                          [ 67%]
-tests\unitary_tests\test_server_loading_json.py .......                                      [ 85%]
-tests\unitary_tests\test_server_login.py ......                                              [100%]
+tests\functional_tests\test_server_functional.py                                              [12%]
+tests\integration_tests\test_server_points_table.py                                           [15%]
+tests\integration_tests\test_server_purchase_places.py                                        [47%]
+tests\unitary_tests\test_server_book.py                                                       [52%]
+tests\unitary_tests\test_server_execption.py                                                  [67%]
+tests\unitary_tests\test_server_loading_json.py                                               [85%]
+tests\unitary_tests\test_server_login.py                                                     [100%]
 
 ================================== 40 passed in 85.75s (0:01:25) ==================================
 ``` 

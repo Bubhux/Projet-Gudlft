@@ -422,6 +422,7 @@ $ flake8
 **Le fichier .coveragerc**   
   - Le fichier contient la configuration de ``Coverage`` ([.coveragerc](.coveragerc))   
 
+--------------------------------------------------------------------------------------------------------------------------------
 
 <div id="auteur-contact"></div>
 <a href="#top" style="float: right;">Retour en haut ↑</a>

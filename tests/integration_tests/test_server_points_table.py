@@ -39,14 +39,14 @@ class TestPointsTableUpdateClass:
         if she_lifts_club:
             # Avant la mise à jour
             initial_points = int(she_lifts_club["points"])
-            print(f"Points du club '{club_name}' avant la mise à jour : {initial_points}")
+            print(f"Points du club '{club_name}' avant la mise à jour: {initial_points}")
 
             # Mettre à jour les points
             she_lifts_club["points"] = updated_points
 
             # Après la mise à jour
             updated_points = int(she_lifts_club["points"])
-            print(f"Points du club '{club_name}' après la mise à jour : {updated_points}")
+            print(f"Points du club '{club_name}' après la mise à jour: {updated_points}")
 
         # Appel de la route
         response = client.get('/displayPointsClubs')

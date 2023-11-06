@@ -71,7 +71,7 @@ __Création des fonctionnalités__
 - Opérations de réservation pour les événements disponibles sur l'application.   
 - Visualisation des clubs et du nombre de points.   
 
->_Testé sous Windows 7 - Python 3.7.2 - Flask 2.2.5_   
+>_Testé sous Windows 10 Professionnel - Python 3.12.0 - Flask 3.0.0_   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -80,11 +80,11 @@ __Création des fonctionnalités__
 
 ### Liste pré-requis   
 
-- Interpréteur Python, version 3.6 ou supérieure   
+- Interpréteur Python, version 3.7 ou supérieure   
 
 Programme élaboré avec les logiciels suivants:   
-- Python v3.7.2 choisissez la version adaptée à votre ordinateur et système. Python est disponible à l'adresse suivante &rarr; https://www.python.org/downloads/   
-- Windows 7 professionnel SP1   
+- Python v3.12.0 choisissez la version adaptée à votre ordinateur et système. Python est disponible à l'adresse suivante &rarr; https://www.python.org/downloads/   
+- Windows 10 Professionnel   
 
 - Les scripts python s'exécutent depuis un terminal.   
 - Pour ouvrir un terminal sur Windows, pressez la touche ``windows + r`` et entrez ``cmd``.   
@@ -318,7 +318,7 @@ Sur cette page, vous devez préciser :
 |GET     |book                        |    545|    0(0.00%) |     60|      6|    163|    61 |   16.21|       0.00|
 |GET     |display_points_clubs        |    578|    0(0.00%) |     60|      5|    161|    61 |   17.19|       0.00|
 
-    Aggregated                      3460     0(0.00%)    80      5      220    69       102.93    0.00
+    Aggregated                  3460    0(0.00%)   80     5     220    69    102.93  0.00
 
 
 
@@ -335,7 +335,7 @@ Response time percentiles (approximated)
 |GET     |book                        |      61|    66|    71|    73|    82|    89|   100|   110|   160|   160|   160|   545|
 |GET     |display_points_clubs        |      61|    67|    71|    74|    83|    93|   100|   110|   160|   160|   160|   578|
 
-    Aggregated                      69      85      100     110     130     150     170     190     220       220        220      3460
+    Aggregated                  69     85    100    110    130    150    170   190    220      220      220    3460
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -351,17 +351,17 @@ Response time percentiles (approximated)
 $ pytest --cov=.
 ```
 ```bash
-tests\functional_tests\test_server_functional.py                                             [ 12%]
-tests\integration_tests\test_server_points_table.py .                                        [ 15%]
-tests\integration_tests\test_server_purchase_places.py .............                         [ 47%]
-tests\unitary_tests\test_server_book.py ..                                                   [ 52%]
-tests\unitary_tests\test_server_execption.py ......                                          [ 67%]
-tests\unitary_tests\test_server_loading_json.py .......                                      [ 85%]
-tests\unitary_tests\test_server_login.py ......                                              [100%]
+tests\functional_tests\test_server_functional.py                                              [12%]
+tests\integration_tests\test_server_points_table.py                                           [15%]
+tests\integration_tests\test_server_purchase_places.py                                        [47%]
+tests\unitary_tests\test_server_book.py                                                       [52%]
+tests\unitary_tests\test_server_execption.py                                                  [67%]
+tests\unitary_tests\test_server_loading_json.py                                               [85%]
+tests\unitary_tests\test_server_login.py                                                     [100%]
 
 ================================== 40 passed in 85.75s (0:01:25) ==================================
 
------------ coverage: platform win32, python 3.7.2-final-0 -----------
+----------- coverage: platform win32, python 3.12.0-final-0 -----------
 Name        Stmts   Miss  Cover
 -------------------------------
 server.py     143      0   100%
@@ -371,7 +371,7 @@ TOTAL         143      0   100%
 
 ============================================= 40 passed in 86.40s (0:01:26) =======================
 ```
-renvoie : **100%** de couverture de code   
+*Renvoie* : **100%** de couverture de code.   
 
 - Pour afficher un rapport de couverture avec plus de détails.   
 
@@ -380,6 +380,10 @@ $ pytest --cov=. --cov-report html
 ```
 
 - Cela générera un dossier ``htmlcov`` dans lequel vous pouvez ouvrir le fichier ``index.html`` pour visualiser un rapport interactif de la couverture de code dans votre navigateur.   
+
+**Rapport Coverage**   
+
+![Rapport Coverage](static/pictures/coverage_report.png/)   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -393,7 +397,7 @@ $ pytest --cov=. --cov-report html
 ```bash
 $ flake8
 ```
-- Ne renvoie aucune erreur.   
+- *Ne renvoie aucune erreur.*   
 
 --------------------------------------------------------------------------------------------------------------------------------
 

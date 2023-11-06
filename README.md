@@ -426,7 +426,7 @@ $ flake8
 <div id="auteur-contact"></div>
 <a href="#top" style="float: right;">Retour en haut ↑</a>
 
-#### Auteur et contact   
+### Auteur et contact   
 
 Pour toute information suplémentaire, vous pouvez me contacter.   
-**Bubhux:** bubhuxpaindepice@gmail.com   
+**Bubhux :** bubhuxpaindepice@gmail.com   

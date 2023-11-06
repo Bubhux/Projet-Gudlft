@@ -106,7 +106,7 @@ Programme élaboré avec les logiciels suivants:
 ```bash
 $ python -m venv env
 ```
-Un répertoire appelé "env" doit être créé.   
+Un répertoire appelé ``env`` doit être créé.   
 
 
 <div id="activation-environnement"></div>
@@ -120,8 +120,8 @@ Un répertoire appelé "env" doit être créé.
 ```bash
 $ env\Scripts\activate.bat
 ```
-- Ce qui ajoutera à chaque début de ligne de commande de votre terminal (env) :   
-*Pour désactiver l'environnement virtuel, il suffit de taper dans votre terminal :*   
+- Ce qui ajoutera à chaque début de ligne de commande de votre terminal ``(env)`` :   
+>*Note : Pour désactiver l'environnement virtuel, il suffit de taper dans votre terminal :*   
 
 ```bash
 $ deactivate

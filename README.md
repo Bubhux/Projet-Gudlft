@@ -181,7 +181,7 @@ Se rendre à l'adresse. &rarr; http://127.0.0.1:5000/
 
 >*Note : Pour exécuter les tests il est nécessaire d'avoir activer l'environnement virtuel, mais il n'est pas nécessaire de lancer le serveur Flask.*    
 
-##### Exécution de Pytest   
+#### Exécution de Pytest   
 
 - Pour exécuter les tests à l'aide de [**Pytest**](https://docs.pytest.org/), utilisez la commande suivante :   
 

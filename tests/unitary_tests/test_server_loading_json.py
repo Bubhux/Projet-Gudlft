@@ -10,9 +10,11 @@ from server import loadClubs, loadCompetitions
 
 class TestLoadingJsonClass:
     """
-    Classe de tests pour vérifier le comportement de l'application Flask lors du chargement de données depuis des fichiers JSON.
-    Attributes:
-        client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
+        Classe de tests pour vérifier le comportement de l'application Flask
+        lors du chargement de données depuis des fichiers JSON.
+
+        Attributes:
+            client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
     """
 
     @pytest.mark.parametrize("club_data", [

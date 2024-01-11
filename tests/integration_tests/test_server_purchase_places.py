@@ -11,9 +11,11 @@ from server import CompetitionFullException, InvalidPlacesException, NotEnoughPo
 
 class TestPurchasePlacesClass:
     """
-    Cette classe contient plusieurs méthodes de test pour vérifier le comportement de différentes actions de la fonction purchasePlaces.
-    Attributes:
-        client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
+        Cette classe contient plusieurs méthodes de test pour vérifier le comportement
+        de différentes actions de la fonction purchasePlaces.
+
+        Attributes:
+            client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
     """
 
     @pytest.fixture
@@ -59,7 +61,15 @@ class TestPurchasePlacesClass:
         return clubs
 
     @pytest.mark.parametrize("competition_index, club_index", [(0, 1)])
-    def test_purchase_places_not_enough_points(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_not_enough_points(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="You do not have enough points to make this booking.")
 
@@ -80,7 +90,15 @@ class TestPurchasePlacesClass:
         print(response.data.decode())
 
     @pytest.mark.parametrize("competition_index, club_index", [(1, 1)])
-    def test_purchase_places_competition_not_found(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_competition_not_found(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Competition not found.")
 
@@ -101,7 +119,15 @@ class TestPurchasePlacesClass:
         print(response.data.decode())
 
     @pytest.mark.parametrize("competition_index, club_index", [(1, 1)])
-    def test_purchase_places_competition_passed(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_competition_passed(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="The competition has already passed.")
 
@@ -122,7 +148,15 @@ class TestPurchasePlacesClass:
         print(response.data.decode())
 
     @pytest.mark.parametrize("competition_index, club_index", [(2, 1)])
-    def test_purchase_places_competition_full(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_competition_full(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="The competition is already full.")
 
@@ -143,7 +177,15 @@ class TestPurchasePlacesClass:
         print(response.data.decode())
 
     @pytest.mark.parametrize("competition_index, club_index", [(2, 1)])
-    def test_purchase_places_invalid_places(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_invalid_places(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Please enter a valid number for places.")
 
@@ -164,7 +206,15 @@ class TestPurchasePlacesClass:
         print(response.data.decode())
 
     @pytest.mark.parametrize("competition_index, club_index", [(0, 2)])
-    def test_purchase_places_maximum_places(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_maximum_places(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="You can book a maximum of 12 athletes at once.")
 
@@ -185,7 +235,15 @@ class TestPurchasePlacesClass:
         print(response.data.decode())
 
     @pytest.mark.parametrize("competition_index, club_index", [(0, 0)])
-    def test_purchase_places_successful_booking(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_successful_booking(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Great-booking complete!")
 
@@ -206,7 +264,15 @@ class TestPurchasePlacesClass:
         print(response.data.decode())
 
     @pytest.mark.parametrize("competition_index, club_index", [(0, 0)])
-    def test_purchase_places_update_points(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_purchase_places_update_points(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Great-booking complete!")
 
@@ -264,7 +330,7 @@ class TestPurchasePlacesClass:
         mocker.patch('server.loadCompetitions', return_value=[
             {
                 "name": "Test Competition",
-                "date": "2024-01-01 10:00:00",
+                "date": "2026-08-25 10:00:00",
                 "numberOfPlaces": "0"
             }
         ])
@@ -292,7 +358,7 @@ class TestPurchasePlacesClass:
         mocker.patch('server.loadCompetitions', return_value=[
             {
                 "name": "Test Competition",
-                "date": "2024-01-01 10:00:00",
+                "date": "2026-08-25 10:00:00",
                 "numberOfPlaces": "20"
             }
         ])
@@ -320,7 +386,7 @@ class TestPurchasePlacesClass:
         mocker.patch('server.loadCompetitions', return_value=[
             {
                 "name": "Test Competition",
-                "date": "2024-01-01 10:00:00",
+                "date": "2026-08-25 10:00:00",
                 "numberOfPlaces": "10"
             }
         ])
@@ -364,7 +430,7 @@ class TestPurchasePlacesClass:
         mocker.patch('server.loadCompetitions', return_value=[
             {
                 "name": "Test Competition",
-                "date": "2024-01-01 10:00:00",
+                "date": "2026-08-25 10:00:00",
                 "numberOfPlaces": "10"
             }
         ])
@@ -390,7 +456,7 @@ class TestPurchasePlacesClass:
         loadCompetitions_mock = mocker.patch('server.loadCompetitions', return_value=[
             {
                 "name": "Test Competition",
-                "date": "2024-01-01 10:00:00",
+                "date": "2026-08-25 10:00:00",
                 "numberOfPlaces": "25"
             }
         ])

@@ -16,9 +16,11 @@ from server import (
 
 class TestExceptionClass:
     """
-    Classe de tests pour vérifier le comportement de l'application Flask lors de l'utilisation des classes qui gère les exceptions.
-    Attributes:
-        client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
+        Classe de tests pour vérifier le comportement de l'application Flask
+        lors de l'utilisation des classes qui gère les exceptions.
+
+        Attributes:
+            client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
     """
 
     def test_competition_not_found_exception(self):

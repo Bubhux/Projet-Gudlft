@@ -11,10 +11,10 @@ from bs4 import BeautifulSoup
 
 class TestPointsTableUpdateClass:
     """
-    Cette classe contient un test qui vérifie que la mise à jour des points d'un club est correctement reflétée
-    dans la page HTML générée et que les balises <td> contiennent les informations mises à jour.
-    Attributes:
-        client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
+        Cette classe contient un test qui vérifie que la mise à jour des points d'un club est correctement reflétée
+        dans la page HTML générée et que les balises <td> contiennent les informations mises à jour.
+        Attributes:
+            client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
     """
 
     @pytest.fixture
@@ -28,8 +28,14 @@ class TestPointsTableUpdateClass:
         ]
         return clubs
 
-    @pytest.mark.parametrize("club_name, email, club_points, updated_points, expected_status_code", [("She Lifts", "kate@shelifts.co.uk", "12", "15", 200)])
-    def test_display_points_update(self, client, test_clubs, club_name, email, club_points, updated_points, expected_status_code, mocker):
+    @pytest.mark.parametrize(
+        "club_name, email, club_points, updated_points, expected_status_code", [
+            ("She Lifts", "kate@shelifts.co.uk", "12", "15", 200)
+        ]
+    )
+    def test_display_points_update(
+        self, client, test_clubs, club_name, email, club_points, updated_points, expected_status_code, mocker
+    ):
         # Configure le mock pour la base de données
         mocker.patch('server.render_template', return_value='<td>{{club["name"]}}</td>\n<td>{{club["points"]}}</td>')
 
@@ -39,14 +45,14 @@ class TestPointsTableUpdateClass:
         if she_lifts_club:
             # Avant la mise à jour
             initial_points = int(she_lifts_club["points"])
-            print(f"Points du club '{club_name}' avant la mise à jour : {initial_points}")
+            print(f"Points du club '{club_name}' avant la mise à jour: {initial_points}")
 
             # Mettre à jour les points
             she_lifts_club["points"] = updated_points
 
             # Après la mise à jour
             updated_points = int(she_lifts_club["points"])
-            print(f"Points du club '{club_name}' après la mise à jour : {updated_points}")
+            print(f"Points du club '{club_name}' après la mise à jour: {updated_points}")
 
         # Appel de la route
         response = client.get('/displayPointsClubs')

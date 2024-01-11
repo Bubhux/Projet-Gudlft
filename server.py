@@ -1,8 +1,10 @@
 """
 Application d'Inscription GUDLFT
 Cette application Flask sert de portail d'inscription pour GUDLFT.
-Elle permet aux utilisateurs de consulter et de réserver des athlètes pour des compétitions et de gérer les points du club.
-Elle charge les données des clubs et des compétitions à partir de fichiers JSON et fournit diverses routes pour interagir avec l'application.
+Elle permet aux utilisateurs de consulter et de réserver des athlètes
+pour des compétitions et de gérer les points du club.
+Elle charge les données des clubs et des compétitions à partir de fichiers JSON
+et fournit diverses routes pour interagir avec l'application.
 """
 
 import os
@@ -104,7 +106,10 @@ def loadCompetitions():
     try:
         with open(filename) as comps:
             listOfCompetitions = json.load(comps)['competitions']
-            competitions_load_message = f"Succes Database loaded for competitions. {len(listOfCompetitions)} competitions loaded from '{filename}'"
+            competitions_load_message = (
+                f"Succes Database loaded for competitions. "
+                f"{len(listOfCompetitions)} competitions loaded from '{filename}'"
+            )
             app.logger.info(competitions_load_message)
             return listOfCompetitions
     except FileNotFoundError:
@@ -130,7 +135,9 @@ clubs = loadClubs()
 def index():
     clubs = loadClubs()
     competitions = loadCompetitions()
-    return render_template('index.html', clubs_load_message=clubs_load_message, competitions_load_message=competitions_load_message)
+    return render_template(
+        'index.html', clubs_load_message=clubs_load_message, competitions_load_message=competitions_load_message
+    )
 
 
 @app.route('/showSummary', methods=['GET', 'POST'])

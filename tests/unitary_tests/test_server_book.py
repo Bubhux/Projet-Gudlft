@@ -9,9 +9,11 @@ from flask import url_for
 
 class TestBookClass:
     """
-    Cette classe contient plusieurs méthodes de test pour vérifier le comportement de différentes actions de l'application.
-    Attributes:
-        client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
+        Cette classe contient plusieurs méthodes de test
+        pour vérifier le comportement de différentes actions de l'application.
+
+        Attributes:
+            client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
     """
 
     @pytest.fixture
@@ -52,7 +54,15 @@ class TestBookClass:
         return clubs
 
     @pytest.mark.parametrize("competition_index, club_index", [(0, 1)])
-    def test_book_competition_and_club_found(self, client, competition_index, club_index, test_competitions, test_clubs, mocker):
+    def test_book_competition_and_club_found(
+        self,
+        client,
+        competition_index,
+        club_index,
+        test_competitions,
+        test_clubs,
+        mocker
+    ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Places available: 25")
 

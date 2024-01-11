@@ -11,7 +11,7 @@ from locust import HttpUser, task
 from server import loadClubs, loadCompetitions
 
 
-# Utilisez une variable partagée pour savoir si le serveur Flask est déjà lancé
+# Utilise une variable partagée pour savoir si le serveur Flask est déjà lancé
 server_started = False
 print(f"Le serveur Flask est inactif. server_started={server_started}")
 
@@ -90,7 +90,9 @@ class LocustServerTest(HttpUser):
         # Simule le processus d'achat de places pour un club dans une compétition.
         competition = loadCompetitions()[0]
         club = loadClubs()[0]
-        self.client.post("/purchasePlaces", data={"club": club['name'], "competition": competition['name'], "places": 5})
+        self.client.post(
+            "/purchasePlaces", data={"club": club['name'], "competition": competition['name'], "places": 5}
+        )
 
     @task
     def performance_display_points(self):

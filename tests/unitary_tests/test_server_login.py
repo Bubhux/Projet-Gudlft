@@ -1,5 +1,6 @@
 """
-Classe de tests pour les fonctions login, logout, index, showSummary pour vérifier le comportement de l'application Flask.
+Classe de tests pour les fonctions login, logout, index, showSummary
+pour vérifier le comportement de l'application Flask.
 """
 
 import pytest
@@ -7,9 +8,11 @@ import pytest
 
 class TestLoginClass:
     """
-    Cette classe contient plusieurs méthodes de test pour vérifier le comportement de différentes routes de l'application.
-    Attributes:
-        client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
+        Cette classe contient plusieurs méthodes de test
+        pour vérifier le comportement de différentes routes de l'application.
+
+        Attributes:
+            client (TestClient): Un client de test Flask pour effectuer des requêtes HTTP.
     """
 
     @pytest.mark.parametrize("email, expected_status_code", [("kate@shelifts.co.uk", 200), ])

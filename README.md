@@ -51,22 +51,22 @@ __Correction des erreurs__
 
 __Amélioration des fonctionnalités__   
 
-  ```python
+  ```python   
   def loadClubs():
   def loadCompetitions():
   def index():
   def showSummary():
   def book():
   def purchasePlaces():
-  ```
+  ```   
 
 __Création des fonctionnalités__   
 
-  ```python
+  ```python   
   def load_mock_clubs():
   def load_mock_competitions():
   def display_points_clubs():
-  ```
+  ```   
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="fonctionnalitées"></div>

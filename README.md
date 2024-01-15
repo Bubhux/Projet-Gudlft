@@ -4,9 +4,7 @@
 
 ![Static Badge](/static/badges/tests-badge.svg)   
 ![Static Badge](/static/badges/coverage-badge.svg)   
-![Static Badge](/static/badges/flake8-badge.svg)   
-
-![Static Badge](/static/badges/Build-with-Python.svg) ![Static Badge](/static/badges/Build-with-Flask.svg)   
+![Static Badge](/static/badges/flake8-badge.svg)     
 
 <div id="top"></div>
 

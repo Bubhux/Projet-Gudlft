@@ -1,4 +1,10 @@
-![Static Badge](static/badges/build-with-python.svg) ![Static Badge](static/badges/build-with-flask.svg) ![Static Badge](static/badges/tests-passing-with-pytest.svg) ![Static Badge](static/badges/tests-passing-with-coverage.svg) ![Static Badge](static/badges/tests-passing-with-locust.svg)
+![Static Badge](static/badges/build-with-python.svg) ![Static Badge](static/badges/build-with-flask.svg)
+![Static Badge](/static/badges/Use-Pytest.svg)
+![Static Badge](/static/badges/Use-Locust.svg)
+
+![Static Badge](/static/badges/tests-badge.svg)
+![Static Badge](/static/badges/coverage-badge.svg)
+![Static Badge](/static/badges/flake8-badge.svg)
 
 <div id="top"></div>
 
@@ -27,10 +33,10 @@
 
 - Application destinée à la réservation d'événements sportifs.   
 - L'objectif de ce projet est d'apporter des corrections aux fonctions existantes et d'implémenter de nouvelles fonctions.   
-- Effectuer un processus de test avec Pytest et Locust.   
+- Effectuer un processus de test avec **Pytest** et **Locust**.   
 
 Plusieurs domaines de l'application **Gudlft** ont été améliorés à partir du projet forker et cloner à l'adresse suivante :   
-&rarr; [Python_Testing](https://github.com/OpenClassrooms-Student-Center/Python_Testing)   
+➔ [Python_Testing](https://github.com/OpenClassrooms-Student-Center/Python_Testing)   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -71,7 +77,7 @@ __Création des fonctionnalités__
 - Opérations de réservation pour les événements disponibles sur l'application.   
 - Visualisation des clubs et du nombre de points.   
 
->_Testé sous Windows 10 Professionnel - Python 3.12.0 - Flask 3.0.0_   
+>_Note : Testé sous **Windows 10** Professionnel - **Python** 3.12.0 - **Flask** 3.0.0_   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -80,16 +86,17 @@ __Création des fonctionnalités__
 
 ### Liste pré-requis   
 
-- Interpréteur Python, version 3.7 ou supérieure   
+- Interpréteur **Python**, version 3.7 ou supérieure   
 
-Programme élaboré avec les logiciels suivants:   
-- Python v3.12.0 choisissez la version adaptée à votre ordinateur et système. Python est disponible à l'adresse suivante &rarr; https://www.python.org/downloads/   
-- Windows 10 Professionnel   
+Application conçue avec les technologies suivantes :   
+- **Python** v3.12.0 choisissez la version adaptée à votre ordinateur et système. **Python** est disponible à l'adresse suivante ➔ https://www.python.org/downloads/   
+- **Flask** version 3.0.0 ➔ [Documentation Flask](https://flask.palletsprojects.com/en/3.0.x/)   
+- **Windows 10** Professionnel   
 
-- Les scripts python s'exécutent depuis un terminal.   
+- Les scripts **Python** s'exécutent depuis un terminal.   
 - Pour ouvrir un terminal sur Windows, pressez la touche ``windows + r`` et entrez ``cmd``.   
-- Sur Mac, pressez la touche ``command + espace`` et entrez ``terminal``.   
-- Sur Linux, vous pouvez ouviri un terminal en pressant les touches ``Ctrl + Alt + T``.   
+- Sur **Mac**, pressez la touche ``command + espace`` et entrez ``terminal``.   
+- Sur **Linux**, vous pouvez ouviri un terminal en pressant les touches ``Ctrl + Alt + T``.   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -98,10 +105,10 @@ Programme élaboré avec les logiciels suivants:
 
 ### Création de l'environnement virtuel   
 
-- Installer une version de Python compatible pour votre ordinateur.   
+- Installer une version de **Python** compatible pour votre ordinateur.   
 - Une fois installer ouvrer le cmd (terminal) placer vous dans le dossier principal (dossier racine).   
 
-*Taper dans votre terminal :*    
+Taper dans votre terminal :    
 
 ```bash
 $ python -m venv env
@@ -116,7 +123,7 @@ Un répertoire appelé ``env`` doit être créé.
 
 - Placez-vous avec le terminal dans le dossier principale (dossier racine).   
 
-*Pour activer l'environnement virtuel créé, il vous suffit de taper dans votre terminal :*   
+Pour activer l'environnement virtuel créé, il vous suffit de taper dans votre terminal :   
 ```bash
 $ env\Scripts\activate.bat
 ```
@@ -133,12 +140,12 @@ $ deactivate
 
 ### Installation des librairies   
 
-- Le programme utilise plusieurs librairies externes et modules de Python, qui sont répertoriés dans le fichier ``requirements.txt``.   
-- Placez-vous dans le dossier où se trouve le fichier requirements.txt avec le terminal, l'environnement virtuel doit être activé.   
+- Le programme utilise plusieurs librairies externes et modules de **Python**, qui sont répertoriés dans le fichier ``requirements.txt``.   
+- Placez-vous dans le dossier où se trouve le fichier ``requirements.txt`` avec le terminal, l'environnement virtuel doit être activé.   
 - Pour faire fonctionner le programme, il vous faudra installer les librairies requises.   
-- À l'aide du fichiers requirements.txt mis à disposition.   
+- À l'aide du fichiers ``requirements.txt`` mis à disposition.   
 
-*Taper dans votre terminal la commande :*   
+Taper dans votre terminal la commande :   
 
 ```bash
 $ pip install -r requirements.txt
@@ -149,13 +156,14 @@ $ pip install -r requirements.txt
 
 ### Exécution de l'application   
 
-#### Utilisation   
+##### Utilisation   
 
 Lancement du serveur [**Flask**](https://flask.palletsprojects.com/en/3.0.x/).   
+- Utilisation de **Flask**. ➔ [Documentation Flask](https://flask.palletsprojects.com/en/3.0.x/)   
 - Placez-vous avec le terminal dans le dossier principal.   
-- Activer l'environnement virtuel et ensuite lancer le serveur Flask.   
+- Activer l'environnement virtuel et ensuite lancer le serveur **Flask**.   
 
-*Taper dans votre terminal la commande :*   
+Taper dans votre terminal la commande :   
 
 ```bash
 $ set FLASK_APP=server.py
@@ -165,10 +173,9 @@ $ flask run
 ```
 
 Lancement de l'application dans le navigateur de votre choix.   
-Se rendre à l'adresse. &rarr; http://127.0.0.1:5000/   
-
-*Navigateur*   
->*Note : Les tests ont était fait sur Firefox et Google Chrome.*   
+Se rendre à l'adresse. ➔ http://127.0.0.1:5000/   
+ 
+>*Note navigateur : Les tests ont était fait sur **Firefox** et **Google Chrome**.*   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -177,13 +184,14 @@ Se rendre à l'adresse. &rarr; http://127.0.0.1:5000/
 
 ### Tests et couverture de code   
 
-- Nous effectuons des tests de plusieurs manières pour garantir la qualité de notre code.   
+- Nous effectuons des tests de plusieurs manières pour garantir la qualité du code.   
 
->*Note : Pour exécuter les tests il est nécessaire d'avoir activer l'environnement virtuel, mais il n'est pas nécessaire de lancer le serveur Flask.*    
+>*Note : Pour exécuter les tests il est nécessaire d'avoir activer l'environnement virtuel, mais il n'est pas nécessaire de lancer le serveur **Flask**.*    
 
-#### Exécution de Pytest   
+##### Exécution de Pytest   
 
-- Pour exécuter les tests à l'aide de [**Pytest**](https://docs.pytest.org/), utilisez la commande suivante :   
+- Utilisation de **Pytest**. ➔ [Documentation Pytest](https://docs.pytest.org/)   
+- Pour exécuter les tests à l'aide de **Pytest**, utilisez la commande suivante :   
 
 ```bash
 $ pytest -v
@@ -206,8 +214,9 @@ tests\unitary_tests\test_server_login.py                                        
 <a href="#top" style="float: right;">Retour en haut ↑</a>
 
 #### Tests unitaires   
-- Les tests unitaires sont générés et exécutés grâce au module [**Pytest**](https://docs.pytest.org/).   
-- Ils sont situés dans le dossier ``tests/unitary_tests/`` &rarr; ([unitary_tests](tests/unitary_tests)).   
+
+- Les tests unitaires sont générés et exécutés grâce au module **Pytest**.   
+- Ils sont situés dans le dossier ``tests/unitary_tests/`` ➔ ([unitary_tests](tests/unitary_tests)).   
   - ``test_server_book.py``   
   - ``test_server_exception.py``   
   - ``test_server_loading_json.py``   
@@ -219,8 +228,9 @@ tests\unitary_tests\test_server_login.py                                        
 <a href="#top" style="float: right;">Retour en haut ↑</a>
 
 #### Tests d'intégrations   
-- Les tests d'intégrations sont générés et exécutés grâce au module [**Pytest**](https://docs.pytest.org/).   
-- Ils sont situés dans le dossier ``tests/integration_tests/`` &rarr; ([integration_tests](tests/integration_tests)).   
+
+- Les tests d'intégrations sont générés et exécutés grâce au module **Pytest**.   
+- Ils sont situés dans le dossier ``tests/integration_tests/`` ➔ ([integration_tests](tests/integration_tests)).   
   - ``test_server_points_table.py``   
   - ``test_server_purchase_places.py``   
 
@@ -230,8 +240,10 @@ tests\unitary_tests\test_server_login.py                                        
 <a href="#top" style="float: right;">Retour en haut ↑</a>
 
 #### Tests fonctionels   
-- Les tests fonctionels sont générés et exécutés grâce au module [**Selenium**](https://selenium-python.readthedocs.io/).   
-- Ils sont situés dans le dossier ``tests/functionnal_tests/`` &rarr; ([functional_tests](tests/functional_tests/)).   
+
+- Utilisation de **Selenium**. ➔ [Documentation Selenium](https://selenium-python.readthedocs.io/)   
+- Les tests fonctionels sont générés et exécutés grâce au module **Selenium**.   
+- Ils sont situés dans le dossier ``tests/functionnal_tests/`` ➔ ([functional_tests](tests/functional_tests/)).   
   - ``test_server_functional.py``   
 
 Les tests vérifient le fonctionnement du serveur, la navigation sur les pages, la saisie de données, et la validation de l'affichage.   
@@ -281,11 +293,14 @@ Chaque méthode de test est conçue pour tester un aspect spécifique de l'appli
 <a href="#top" style="float: right;">Retour en haut ↑</a>
 
 #### Tests de performances avec Locust   
-- Les tests de performances sont générés et exécutés grâce au module [**Locust**](https://locust.io/).   
-- Ils sont situés dans le dossier ``tests/performance_tests/`` &rarr; ([performance_tests](tests/performance_tests/)).   
+
+- Utilisation de **Locust**. ➔ [Documentation Locust](https://locust.io/).   
+- Les tests de performances sont générés et exécutés grâce au module **Locust**.   
+- Ils sont situés dans le dossier ``tests/performance_tests/`` ➔ ([performance_tests](tests/performance_tests/)).   
   - ``locustfile.py``   
 
 - Lancer le serveur de test de performance :   
+
 ```bash
 $ locust -f tests\performance_tests\locustfile.py
 ```
@@ -296,7 +311,7 @@ Sur cette page, vous devez préciser :
 
 - **Number of total users to simulate** : le nombre total d'utilisateurs à simuler.   
 - **Spawn rate** : le taux de création d'utilisateurs, il correspond au nombre d’utilisateurs créés par seconde jusqu’à atteindre le nombre total d’utilisateurs.   
-- **Host** : l’adresse de l'application, dans notre cas http://127.0.0.1:5000/ l’application est lancée sur le localhost.   
+- **Host** : l’adresse de l'application, dans notre cas http://127.0.0.1:5000/ l’application est lancée sur le ``localhost``.   
 
 **Page de connexion Locust**   
 
@@ -344,9 +359,9 @@ Response time percentiles (approximated)
 
 #### Tests de couverture de code avec Coverage   
 
-- Utilisation de [Coverage](https://coverage.readthedocs.io/en/7.3.2/) pour mesurer la couverture de code.   
+- Utilisation de **Coverage** pour mesurer la couverture de code. ➔ [Documentation Coverage](https://coverage.readthedocs.io/en/7.3.2/)   
+- Cette commande exécute les tests en utilisant **Coverage** pour collecter les informations de couverture.   
 
-- Cette commande exécute les tests en utilisant Coverage pour collecter les informations de couverture.   
 ```bash
 $ pytest --cov=.
 ```
@@ -371,7 +386,7 @@ TOTAL         143      0   100%
 
 ============================================= 40 passed in 86.40s (0:01:26) =======================
 ```
-*Renvoie* : **100%** de couverture de code.   
+Renvoie : **100%** de couverture de code.   
 
 - Pour afficher un rapport de couverture avec plus de détails.   
 
@@ -392,12 +407,12 @@ $ pytest --cov=. --cov-report html
 
 ### Rapport avec flake8   
 
-*Tapez dans votre terminal la commande :*   
+Tapez dans votre terminal la commande :   
 
 ```bash
 $ flake8
 ```
-- *Ne renvoie aucune erreur.*   
+- Ne renvoie aucune erreur.   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -406,21 +421,40 @@ $ flake8
 
 ### Informations importantes sur les différents fichiers et dossiers   
 
-**Le dossier tests**   
-  - Contient 4 dossiers contenant les fichiers de configuration pour les tests. &rarr; ([tests](tests))   
-    - ``functional_tests``   
-    - ``integration_tests``   
-    - ``performance_tests``   
-    - ``unitary_tests``   
+##### Le dossier tests   
 
-**Le dossier templates**   
-  - Le dossir contient toute la configuration des pages ``html`` ([templates](templates))   
+  - Contient 4 dossiers contenant les fichiers de configuration pour les tests. ➔ ([tests](tests))   
+    - ``functional_tests``  ➔ ([functional_tests.py](/tests/functional_tests/test_server_functional.py))   
+        &nbsp;   
 
-**Le dossier static**   
-- Dossier qui contient qui contient les images svg des badges et le dossier ``css`` ([css](static/css)) nécessaire à l'application.   
+    - ``integration_tests`` ➔ ([integration_tests.py](/tests/integration_tests/test_server_points_table.py))   
+    - ``integration_tests`` ➔ ([test_server_purchase_places.py](/tests/integration_tests/test_server_purchase_places.py))   
+    - ``integration_tests`` ➔ ([locustfile.py](/tests/performance_tests/locustfile.py))   
+        &nbsp;   
 
-**Le fichier .coveragerc**   
+    - ``unitary_tests`` ➔ ([test_server_book.py](/tests/unitary_tests/test_server_book.py))   
+    - ``unitary_tests`` ➔ ([test_server_exception.py](/tests/unitary_tests/test_server_exception.py))   
+    - ``unitary_tests`` ➔ ([test_server_loading_json.py](/tests/unitary_tests/test_server_loading_json.py))   
+    - ``unitary_tests`` ➔ ([test_server_exception.py](/tests/unitary_tests/test_server_login.py))   
+
+##### Le dossier templates   
+
+  - Le dossier contient toute la configuration des pages ``html`` ([templates](templates))   
+
+##### Le dossier static   
+
+- Dossier qui contient qui contient les images et les badges nécessaire à l'application.   
+    - ``static`` ➔ ([badges](static/badges))   
+    - ``static`` ➔ ([css](static/css))   
+    - ``static`` ➔ ([pictures](static/pictures))   
+
+##### Le fichier .coveragerc   
+
   - Le fichier contient la configuration de ``Coverage`` ([.coveragerc](.coveragerc))   
+
+##### Le fichier .flake8   
+
+  - Le fichier contient la configuration de ``Flake8`` ([.flake8](.flake8))   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -429,5 +463,5 @@ $ flake8
 
 ### Auteur et contact   
 
-Pour toute information suplémentaire, vous pouvez me contacter.   
+Pour toute information supplémentaire, vous pouvez me contacter.   
 **Bubhux :** bubhuxpaindepice@gmail.com   

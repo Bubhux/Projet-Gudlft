@@ -1,4 +1,4 @@
-![Static Badge](static/badges/build-with-python.svg) ![Static Badge](static/badges/build-with-flask.svg)
+![Static Badge](static/badges/Build-with-Python.svg) ![Static Badge](static/badges/Build-with-Flask.svg)
 ![Static Badge](/static/badges/Use-Pytest.svg)
 ![Static Badge](/static/badges/Use-Locust.svg)
 

@@ -68,7 +68,7 @@ def load_mock_competitions():
     return [
         {
             "name": "Spring Festival",
-            "date": "2024-03-27 10:00:00",
+            "date": "2028-03-27 10:00:00",
             "numberOfPlaces": "25"
         },
         {

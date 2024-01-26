@@ -47,7 +47,7 @@ start_flask_server()
 
 class LocustServerTest(HttpUser):
     """
-    Classe LocustServerTest pour simuler les tests de performance avec Locust.
+        Classe LocustServerTest pour simuler les tests de performance avec Locust.
     """
 
     def on_start(self):

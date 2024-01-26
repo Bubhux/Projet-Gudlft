@@ -10,7 +10,7 @@
 
 ## Menu   
 1. **[Informations générales](#informations-générales)**   
-2. **[Fonctionnalitées](#fonctionnalitées)**   
+2. **[Fonctionnalités](#fonctionnalités)**   
 3. **[Liste pré-requis](#liste-pre-requis)**   
 4. **[Création environnement](#creation-environnement)**   
 5. **[Activation environnement](#activation-environnement)**   
@@ -67,12 +67,13 @@ __Création des fonctionnalités__
   def load_mock_competitions():
   def display_points_clubs():
   ```   
+
 --------------------------------------------------------------------------------------------------------------------------------
 
-<div id="fonctionnalitées"></div>
+<div id="fonctionnalités"></div>
 <a href="#top" style="float: right;">Retour en haut ↑</a>
 
-### Fonctionnalitées   
+### Fonctionnalités   
 
 - Opérations de réservation pour les événements disponibles sur l'application.   
 - Visualisation des clubs et du nombre de points.   
@@ -108,11 +109,12 @@ Application conçue avec les technologies suivantes :
 - Installer une version de **Python** compatible pour votre ordinateur.   
 - Une fois installer ouvrer le cmd (terminal) placer vous dans le dossier principal (dossier racine).   
 
-Taper dans votre terminal :    
+Taper dans votre terminal :   
 
-```bash
+```bash   
 $ python -m venv env
-```
+```   
+
 Un répertoire appelé ``env`` doit être créé.   
 
 
@@ -124,15 +126,18 @@ Un répertoire appelé ``env`` doit être créé.
 - Placez-vous avec le terminal dans le dossier principale (dossier racine).   
 
 Pour activer l'environnement virtuel créé, il vous suffit de taper dans votre terminal :   
-```bash
+
+```bash   
 $ env\Scripts\activate.bat
-```
+```   
+
 - Ce qui ajoutera à chaque début de ligne de commande de votre terminal ``(env)`` :   
 >*Note : Pour désactiver l'environnement virtuel, il suffit de taper dans votre terminal :*   
 
-```bash
+```bash   
 $ deactivate
-```
+```   
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="installation-librairies"></div>
@@ -147,30 +152,31 @@ $ deactivate
 
 Taper dans votre terminal la commande :   
 
-```bash
+```bash   
 $ pip install -r requirements.txt
-```
+```   
 
 <div id="execution-application"></div>
 <a href="#top" style="float: right;">Retour en haut ↑</a>
 
 ### Exécution de l'application   
 
-##### Utilisation   
+#### Utilisation   
 
-Lancement du serveur [**Flask**](https://flask.palletsprojects.com/en/3.0.x/).   
+Lancement du serveur **Flask**.   
 - Utilisation de **Flask**. ➔ [Documentation Flask](https://flask.palletsprojects.com/en/3.0.x/)   
 - Placez-vous avec le terminal dans le dossier principal.   
 - Activer l'environnement virtuel et ensuite lancer le serveur **Flask**.   
 
 Taper dans votre terminal la commande :   
 
-```bash
+```bash   
 $ set FLASK_APP=server.py
-```
-```bash
+```      
+
+```bash   
 $ flask run
-```
+```   
 
 Lancement de l'application dans le navigateur de votre choix.   
 Se rendre à l'adresse. ➔ http://127.0.0.1:5000/   
@@ -188,15 +194,16 @@ Se rendre à l'adresse. ➔ http://127.0.0.1:5000/
 
 >*Note : Pour exécuter les tests il est nécessaire d'avoir activer l'environnement virtuel, mais il n'est pas nécessaire de lancer le serveur **Flask**.*    
 
-##### Exécution de Pytest   
+#### Exécution de Pytest   
 
 - Utilisation de **Pytest**. ➔ [Documentation Pytest](https://docs.pytest.org/)   
 - Pour exécuter les tests à l'aide de **Pytest**, utilisez la commande suivante :   
 
-```bash
+```bash   
 $ pytest -v
-```
-```bash
+```   
+
+```bash   
 tests\functional_tests\test_server_functional.py                                              [12%]
 tests\integration_tests\test_server_points_table.py                                           [15%]
 tests\integration_tests\test_server_purchase_places.py                                        [47%]
@@ -206,7 +213,7 @@ tests\unitary_tests\test_server_loading_json.py                                 
 tests\unitary_tests\test_server_login.py                                                     [100%]
 
 ================================== 40 passed in 85.75s (0:01:25) ==================================
-``` 
+```   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
@@ -250,43 +257,44 @@ Les tests vérifient le fonctionnement du serveur, la navigation sur les pages, 
 Chaque méthode de test est conçue pour tester un aspect spécifique de l'application.   
 - Les tests sont les suivants :   
 
-```python
+```python   
 1. def test_home_page(): 
 # Vérifie que la page d'accueil s'affiche correctement et contient le titre attendu.   
-```
+```   
 
-```python
+```python   
 2. def test_display_points_table_clubs():
 # Vérifie que la page "View clubs points" s'affiche correctement
 # et affiche le message "Points available by clubs". 
 ```  
 
-```python
+```python   
 3. def test_login_user():
 # Test le processus de connexion de l'utilisateur
 # et vérifie que la page de bienvenue affiche l'adresse e-mail de l'utilisateur connecté.   
-```
+```   
 
-```python
+```python   
 4. def test_book_places_reservation_success():
 # Teste le processus de réservation de places pour une compétition.
 # Il simule la sélection de places, la réservation et vérifie le message de confirmation.   
-```
+```   
 
-```python
+```python   
 5. def test_book_places_reservation_success():
 # Teste le processus de réservation de places pour une compétition.
 # Il simule la sélection de places, la réservation et vérifie le message de confirmation.
 # Ensuite, le test vérifie que les points disponibles sont mis à jour
 # conformément à la réservation effectuée et que le nombre
 # de places disponibles pour cette compétition est correctement réduit.   
-```
+```   
 
-```python
+```python   
 6. def test_logout():
 # Teste le processus de déconnexion de l'utilisateur et vérifie que l'utilisateur est redirigé
 # vers la page de connexion.   
-```
+```   
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-performances"></div>
@@ -301,9 +309,11 @@ Chaque méthode de test est conçue pour tester un aspect spécifique de l'appli
 
 - Lancer le serveur de test de performance :   
 
+
 ```bash
 $ locust -f tests\performance_tests\locustfile.py
-```
+```   
+
 - Se rendre sur l'adresse : [http://localhost:8089/](http://localhost:8089/)   
 - Choisir les options et lancer les tests.   
 
@@ -336,7 +346,6 @@ Sur cette page, vous devez préciser :
     Aggregated                     3460      0(0.00%)    80      5      220    69      102.93   0.00
 
 
-
 Response time percentiles (approximated)
 |Type    |Name                        |     50%|   66%|   75%|   80%|   90%|   95%|   98%|   99%| 99.9%|99.99%|  100%|# reqs|
 |--------|----------------------------|--------|------|------|------|------|------|------|------|------|------|------|------|
@@ -352,6 +361,7 @@ Response time percentiles (approximated)
 
     Aggregated                     69      85     100       110     130     150     170    190     220      220      220    3460
 
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-coverage"></div>
@@ -362,10 +372,11 @@ Response time percentiles (approximated)
 - Utilisation de **Coverage** pour mesurer la couverture de code. ➔ [Documentation Coverage](https://coverage.readthedocs.io/en/7.3.2/)   
 - Cette commande exécute les tests en utilisant **Coverage** pour collecter les informations de couverture.   
 
-```bash
+```bash   
 $ pytest --cov=.
-```
-```bash
+```   
+
+```bash   
 tests\functional_tests\test_server_functional.py                                              [12%]
 tests\integration_tests\test_server_points_table.py                                           [15%]
 tests\integration_tests\test_server_purchase_places.py                                        [47%]
@@ -385,14 +396,15 @@ TOTAL         143      0   100%
 
 
 ============================================= 40 passed in 86.40s (0:01:26) =======================
-```
+```   
+
 Renvoie : **100%** de couverture de code.   
 
 - Pour afficher un rapport de couverture avec plus de détails.   
 
-```bash
+```bash   
 $ pytest --cov=. --cov-report html
-```
+```   
 
 - Cela générera un dossier ``htmlcov`` dans lequel vous pouvez ouvrir le fichier ``index.html`` pour visualiser un rapport interactif de la couverture de code dans votre navigateur.   
 
@@ -409,9 +421,10 @@ $ pytest --cov=. --cov-report html
 
 Tapez dans votre terminal la commande :   
 
-```bash
+```bash   
 $ flake8
-```
+```   
+
 - Ne renvoie aucune erreur.   
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -421,9 +434,10 @@ $ flake8
 
 ### Informations importantes sur les différents fichiers et dossiers   
 
-##### Le dossier tests   
+#### Le dossier tests   
 
   - Contient 4 dossiers contenant les fichiers de configuration pour les tests. ➔ ([tests](tests))   
+
     - ``functional_tests``  ➔ ([functional_tests.py](/tests/functional_tests/test_server_functional.py))   
         &nbsp;   
 
@@ -437,24 +451,25 @@ $ flake8
     - ``unitary_tests`` ➔ ([test_server_loading_json.py](/tests/unitary_tests/test_server_loading_json.py))   
     - ``unitary_tests`` ➔ ([test_server_exception.py](/tests/unitary_tests/test_server_login.py))   
 
-##### Le dossier templates   
+#### Le dossier templates   
 
-  - Le dossier contient toute la configuration des pages ``html`` ([templates](templates))   
+  - Le dossier contient toute la configuration des pages ``html`` ➔ ([templates](templates))   
 
-##### Le dossier static   
+#### Le dossier static   
 
-- Dossier qui contient qui contient les images et les badges nécessaire à l'application.   
-    - ``static`` ➔ ([badges](static/badges))   
-    - ``static`` ➔ ([css](static/css))   
-    - ``static`` ➔ ([pictures](static/pictures))   
+  - Dossier qui contient qui contient les images et les badges nécessaire à l'application.   
 
-##### Le fichier .coveragerc   
+      - ``static`` ➔ ([badges](static/badges))   
+      - ``static`` ➔ ([css](static/css))   
+      - ``static`` ➔ ([pictures](static/pictures))   
 
-  - Le fichier contient la configuration de ``Coverage`` ([.coveragerc](.coveragerc))   
+#### Le fichier .coveragerc   
 
-##### Le fichier .flake8   
+  - Le fichier contient la configuration de ``Coverage`` ➔ ([.coveragerc](.coveragerc))   
 
-  - Le fichier contient la configuration de ``Flake8`` ([.flake8](.flake8))   
+#### Le fichier .flake8   
+
+  - Le fichier contient la configuration de ``Flake8`` ➔ ([.flake8](.flake8))   
 
 --------------------------------------------------------------------------------------------------------------------------------
 

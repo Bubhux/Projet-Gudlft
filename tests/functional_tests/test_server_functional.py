@@ -1,5 +1,5 @@
 """
-Docstring fichier test_server_functional.py
+Fichier test_server_functional.py pour effectuer des tests de fonctionnalités avec Selenium.
 """
 
 import os
@@ -15,35 +15,32 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class TestServerFunctional:
     """
-    Cette classe contient des tests fonctionnels pour l'application Flask de GUDLFT Registration.
-    Les tests vérifient le fonctionnement du serveur, la navigation sur les pages, la saisie de données,
-    et la validation de l'affichage. Chaque méthode de test est conçue pour tester un aspect spécifique
-    de l'application. Les tests sont les suivants :
+        Cette classe contient des tests fonctionnels pour l'application Flask de GUDLFT Registration.
+        Les tests vérifient le fonctionnement du serveur, la navigation sur les pages, la saisie de données,
+        et la validation de l'affichage. Chaque méthode de test est conçue pour tester un aspect spécifique
+        de l'application. Les tests sont les suivants :
 
-    - test_home_page: Vérifie que la page d'accueil s'affiche correctement et contient le titre attendu.
+        - test_home_page: Vérifie que la page d'accueil s'affiche correctement et contient le titre attendu.
 
-    - test_display_points_table_clubs: Vérifie que la page "View clubs points" s'affiche correctement et
-      affiche le message "Points available by clubs".
+        - test_display_points_table_clubs: Vérifie que la page "View clubs points" s'affiche correctement et
+        affiche le message "Points available by clubs".
 
-    - test_login_user: Teste le processus de connexion de l'utilisateur et vérifie que la page de bienvenue
-      affiche l'adresse e-mail de l'utilisateur connecté.
+        - test_login_user: Teste le processus de connexion de l'utilisateur et vérifie que la page de bienvenue
+        affiche l'adresse e-mail de l'utilisateur connecté.
 
-    - test_book_places_reservation_success: Teste le processus de réservation de places pour une compétition.
-      Il simule la sélection de places, la réservation et vérifie le message de confirmation.
+        - test_book_places_reservation_success: Teste le processus de réservation de places pour une compétition.
+        Il simule la sélection de places, la réservation et vérifie le message de confirmation. Ensuite, le test
+        vérifie que les points disponibles sont mis à jour conformément à la réservation effectuée et que le nombre
+        de places disponibles pour cette compétition est correctement réduit.
 
-    - test_book_places_reservation_success: Teste le processus de réservation de places pour une compétition.
-      Il simule la sélection de places, la réservation et vérifie le message de confirmation. Ensuite, le test
-      vérifie que les points disponibles sont mis à jour conformément à la réservation effectuée et que le nombre
-      de places disponibles pour cette compétition est correctement réduit.
+        - test_logout: Teste le processus de déconnexion de l'utilisateur et vérifie que l'utilisateur est redirigé
+        vers la page de connexion.
 
-    - test_logout: Teste le processus de déconnexion de l'utilisateur et vérifie que l'utilisateur est redirigé
-      vers la page de connexion.
+        :param mocker: Utilisé pour simuler les données de clubs et de compétitions via les
+        fonctions `load_mock_clubs` et `load_mock_competitions`.
 
-    :param mocker: Utilisé pour simuler les données de clubs et de compétitions via les
-    fonctions `load_mock_clubs` et `load_mock_competitions`.
-
-    Les tests utilisent le framework Pytest et le navigateur Web Selenium pour automatiser les interactions avec
-    l'application. Ils assurent que l'application fonctionne correctement du point de vue de l'utilisateur.
+        Les tests utilisent le framework Pytest et le navigateur Web Selenium pour automatiser les interactions avec
+        l'application. Ils assurent que l'application fonctionne correctement du point de vue de l'utilisateur.
     """
 
     def setup_method(self, method):
@@ -72,7 +69,7 @@ class TestServerFunctional:
         app.run(host='127.0.0.1', port=5000)
 
     def test_home_page(self, mocker):
-        # Ouvrir la page d'accueil
+        # Ouvre la page d'accueil
         self.driver.get("http://127.0.0.1:5000/")
 
         print("Page title:", self.driver.title)
@@ -152,7 +149,7 @@ class TestServerFunctional:
 
         time.sleep(3)
 
-        # Remplir le champ d'adresse e-mail et se connecter
+        # Remplis le champ d'adresse e-mail et se connecter
         email_input = self.driver.find_element(By.NAME, "email")
         email_input.send_keys("john@simplylift.co")
 
@@ -226,7 +223,7 @@ class TestServerFunctional:
         date_found = False
 
         for element in date_elements:
-            if "Date: 2024-03-27 10:00:00" in element.text:
+            if "Date: 2028-03-27 10:00:00" in element.text:
                 date_found = True
                 break
 

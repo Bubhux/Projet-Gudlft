@@ -23,7 +23,7 @@ class TestPurchasePlacesClass:
         competitions = [
             {
                 "name": "Spring Festival",
-                "date": "2024-03-27 10:00:00",
+                "date": "2028-03-27 10:00:00",
                 "numberOfPlaces": "25"
             },
             {
@@ -33,7 +33,7 @@ class TestPurchasePlacesClass:
             },
             {
                 "name": "Atomic Pro",
-                "date": "2024-10-22 13:30:00",
+                "date": "2028-10-22 13:30:00",
                 "numberOfPlaces": "0"
             }
         ]

@@ -252,9 +252,17 @@ tests\unitary_tests\test_server_login.py                                        
 - Les tests fonctionels sont générés et exécutés grâce au module **Selenium**.   
 - Ils sont situés dans le dossier ``tests/functionnal_tests/`` ➔ ([functional_tests](tests/functional_tests/)).   
   - ``test_server_functional.py``   
+      &nbsp;   
 
-Les tests vérifient le fonctionnement du serveur, la navigation sur les pages, la saisie de données, et la validation de l'affichage.   
-Chaque méthode de test est conçue pour tester un aspect spécifique de l'application.   
+- Les tests vérifient :   
+
+  - le fonctionnement du serveur   
+  - la navigation sur les pages   
+  - la saisie de données   
+  - la validation de l'affichage   
+
+>*Chaque méthode de test est conçue pour tester un aspect spécifique de l'application.*   
+
 - Les tests sont les suivants :   
 
 ```python   

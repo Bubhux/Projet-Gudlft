@@ -23,21 +23,21 @@ class TestServerFunctional:
         - test_home_page: Vérifie que la page d'accueil s'affiche correctement et contient le titre attendu.
 
         - test_display_points_table_clubs: Vérifie que la page "View clubs points" s'affiche correctement et
-        affiche le message "Points available by clubs".
+          affiche le message "Points available by clubs".
 
         - test_login_user: Teste le processus de connexion de l'utilisateur et vérifie que la page de bienvenue
-        affiche l'adresse e-mail de l'utilisateur connecté.
+          affiche l'adresse e-mail de l'utilisateur connecté.
 
         - test_book_places_reservation_success: Teste le processus de réservation de places pour une compétition.
-        Il simule la sélection de places, la réservation et vérifie le message de confirmation. Ensuite, le test
-        vérifie que les points disponibles sont mis à jour conformément à la réservation effectuée et que le nombre
-        de places disponibles pour cette compétition est correctement réduit.
+          Il simule la sélection de places, la réservation et vérifie le message de confirmation. Ensuite, le test
+          vérifie que les points disponibles sont mis à jour conformément à la réservation effectuée et que le nombre
+          de places disponibles pour cette compétition est correctement réduit.
 
         - test_logout: Teste le processus de déconnexion de l'utilisateur et vérifie que l'utilisateur est redirigé
-        vers la page de connexion.
+          vers la page de connexion.
 
         :param mocker: Utilisé pour simuler les données de clubs et de compétitions via les
-        fonctions `load_mock_clubs` et `load_mock_competitions`.
+         fonctions `load_mock_clubs` et `load_mock_competitions`.
 
         Les tests utilisent le framework Pytest et le navigateur Web Selenium pour automatiser les interactions avec
         l'application. Ils assurent que l'application fonctionne correctement du point de vue de l'utilisateur.

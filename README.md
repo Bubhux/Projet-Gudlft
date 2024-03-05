@@ -9,6 +9,7 @@
 <div id="top"></div>
 
 ## Menu   
+
 1. **[Informations générales](#informations-générales)**   
 2. **[Fonctionnalités](#fonctionnalités)**   
 3. **[Liste pré-requis](#liste-pre-requis)**   
@@ -29,7 +30,10 @@
 
 <div id="informations-générales"></div>
 
-### Projet Gudlft   
+<div style="display: flex; align-items: center;">
+    <h3>Projet Gudlft</h3>
+    <img src="/static/pictures/logo_gudlft.png" alt="Logo Gudlft" width="120">
+</div>
 
 - Application destinée à la réservation d'événements sportifs.   
 - L'objectif de ce projet est d'apporter des corrections aux fonctions existantes et d'implémenter de nouvelles fonctions.   
@@ -40,16 +44,16 @@ Plusieurs domaines de l'application **Gudlft** ont été améliorés à partir d
 
 --------------------------------------------------------------------------------------------------------------------------------
 
-__Correction des erreurs__   
+. __Correction des erreurs__   
 
-   - ``ERROR:`` Entering a unknown email crashes the app   
-   - ``BUG:`` Clubs should not be able to use more than their points allowed   
-   - ``BUG:`` Clubs shouldn't be able to book more than 12 places per competition   
-   - ``BUG:`` Booking places in past competitions   
-   - ``BUG:`` Point updates are not reflected   
-   - ``FEATURE:`` Implement Points Display Board   
+   - ``ERROR`` : Entering a unknown email crashes the app   
+   - ``BUG`` : Clubs should not be able to use more than their points allowed   
+   - ``BUG`` : Clubs shouldn't be able to book more than 12 places per competition   
+   - ``BUG`` : Booking places in past competitions   
+   - ``BUG`` : Point updates are not reflected   
+   - ``FEATURE`` : Implement Points Display Board   
 
-__Amélioration des fonctionnalités__   
+. __Amélioration des fonctionnalités__   
 
   ```python   
   def loadClubs():
@@ -60,7 +64,7 @@ __Amélioration des fonctionnalités__
   def purchasePlaces():
   ```   
 
-__Création des fonctionnalités__   
+. __Création des fonctionnalités__   
 
   ```python   
   def load_mock_clubs():
@@ -71,43 +75,46 @@ __Création des fonctionnalités__
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="fonctionnalités"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Fonctionnalités   
 
 - Opérations de réservation pour les événements disponibles sur l'application.   
 - Visualisation des clubs et du nombre de points.   
 
->_Note : Testé sous **Windows 10** Professionnel - **Python** 3.12.0 - **Flask** 3.0.0_   
+>_**Note :** Testé sous **Windows 10** Professionnel - **Python** 3.12.0 - **Flask** 3.0.0_   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="liste-pre-requis"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Liste pré-requis   
 
-- Interpréteur **Python**, version 3.7 ou supérieure   
+- Interpréteur **Python**, version 3.12 ou supérieure   
 
 Application conçue avec les technologies suivantes :   
-- **Python** v3.12.0 choisissez la version adaptée à votre ordinateur et système. **Python** est disponible à l'adresse suivante ➔ https://www.python.org/downloads/   
+
+- **Python** v3.12.0 choisissez la version adaptée à votre ordinateur et système.   
+- **Python** est disponible à l'adresse suivante ➔ https://www.python.org/downloads/   
 - **Flask** version 3.0.0 ➔ [Documentation Flask](https://flask.palletsprojects.com/en/3.0.x/)   
 - **Windows 10** Professionnel   
+  &nbsp;   
 
 - Les scripts **Python** s'exécutent depuis un terminal.   
-- Pour ouvrir un terminal sur Windows, pressez la touche ``windows + r`` et entrez ``cmd``.   
-- Sur **Mac**, pressez la touche ``command + espace`` et entrez ``terminal``.   
-- Sur **Linux**, vous pouvez ouviri un terminal en pressant les touches ``Ctrl + Alt + T``.   
+  - Pour ouvrir un terminal sur **Windows**, pressez la touche ``windows + r`` et entrez ``cmd``.   
+  - Sur **Mac**, pressez la touche ``command + espace`` et entrez ``terminal``.   
+  - Sur **Linux**, vous pouvez ouviri un terminal en pressant les touches ``Ctrl + Alt + T``.   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="creation-environnement"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Création de l'environnement virtuel   
 
 - Installer une version de **Python** compatible pour votre ordinateur.   
-- Une fois installer ouvrer le cmd (terminal) placer vous dans le dossier principal (dossier racine).   
+- Une fois installer ouvrer **le cmd (terminal)** placer vous dans le dossier principal **(dossier racine)**.   
 
 Taper dans votre terminal :   
 
@@ -117,13 +124,14 @@ $ python -m venv env
 
 Un répertoire appelé ``env`` doit être créé.   
 
+--------------------------------------------------------------------------------------------------------------------------------
 
 <div id="activation-environnement"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Activation de l'environnement virtuel   
 
-- Placez-vous avec le terminal dans le dossier principale (dossier racine).   
+- Placez-vous avec le terminal dans le dossier principale **(dossier racine)**.   
 
 Pour activer l'environnement virtuel créé, il vous suffit de taper dans votre terminal :   
 
@@ -132,7 +140,7 @@ $ env\Scripts\activate.bat
 ```   
 
 - Ce qui ajoutera à chaque début de ligne de commande de votre terminal ``(env)`` :   
->*Note : Pour désactiver l'environnement virtuel, il suffit de taper dans votre terminal :*   
+>_**Note :** Pour désactiver l'environnement virtuel, il suffit de taper dans votre terminal :_   
 
 ```bash   
 $ deactivate
@@ -141,7 +149,7 @@ $ deactivate
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="installation-librairies"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Installation des librairies   
 
@@ -156,14 +164,17 @@ Taper dans votre terminal la commande :
 $ pip install -r requirements.txt
 ```   
 
+--------------------------------------------------------------------------------------------------------------------------------
+
 <div id="execution-application"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Exécution de l'application   
 
 #### Utilisation   
 
 Lancement du serveur **Flask**.   
+
 - Utilisation de **Flask**. ➔ [Documentation Flask](https://flask.palletsprojects.com/en/3.0.x/)   
 - Placez-vous avec le terminal dans le dossier principal.   
 - Activer l'environnement virtuel et ensuite lancer le serveur **Flask**.   
@@ -181,18 +192,18 @@ $ flask run
 Lancement de l'application dans le navigateur de votre choix.   
 Se rendre à l'adresse. ➔ http://127.0.0.1:5000/   
  
->*Note navigateur : Les tests ont était fait sur **Firefox** et **Google Chrome**.*   
+>_**Note navigateur :** Les tests ont était fait sur **Firefox** et **Google Chrome**._   
 
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-et-couverture-de-code"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Tests et couverture de code   
 
 - Nous effectuons des tests de plusieurs manières pour garantir la qualité du code.   
 
->*Note : Pour exécuter les tests il est nécessaire d'avoir activer l'environnement virtuel, mais il n'est pas nécessaire de lancer le serveur **Flask**.*    
+>_**Note :** Pour exécuter les tests il est nécessaire d'avoir activer l'environnement virtuel, mais il n'est pas nécessaire de lancer le serveur **Flask**._    
 
 #### Exécution de Pytest   
 
@@ -218,7 +229,7 @@ tests\unitary_tests\test_server_login.py                                        
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-unitaires"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 #### Tests unitaires   
 
@@ -232,7 +243,7 @@ tests\unitary_tests\test_server_login.py                                        
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-integrations"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 #### Tests d'intégrations   
 
@@ -244,7 +255,7 @@ tests\unitary_tests\test_server_login.py                                        
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-fonctionels"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 #### Tests fonctionels   
 
@@ -261,7 +272,7 @@ tests\unitary_tests\test_server_login.py                                        
   - la saisie de données   
   - la validation de l'affichage   
 
->*Chaque méthode de test est conçue pour tester un aspect spécifique de l'application.*   
+>_**Chaque méthode de test est conçue pour tester un aspect spécifique de l'application.**_   
 
 - Les tests sont les suivants :   
 
@@ -306,7 +317,7 @@ tests\unitary_tests\test_server_login.py                                        
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-performances"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 #### Tests de performances avec Locust   
 
@@ -327,9 +338,9 @@ $ locust -f tests\performance_tests\locustfile.py
 
 Sur cette page, vous devez préciser :   
 
-- **Number of total users to simulate** : le nombre total d'utilisateurs à simuler.   
-- **Spawn rate** : le taux de création d'utilisateurs, il correspond au nombre d’utilisateurs créés par seconde jusqu’à atteindre le nombre total d’utilisateurs.   
-- **Host** : l’adresse de l'application, dans notre cas http://127.0.0.1:5000/ l’application est lancée sur le ``localhost``.   
+- **Number of total users to simulate :** le nombre total d'utilisateurs à simuler.   
+- **Spawn rate :** le taux de création d'utilisateurs, il correspond au nombre d’utilisateurs créés par seconde jusqu’à atteindre le nombre total d’utilisateurs.   
+- **Host :** l’adresse de l'application, dans notre cas http://127.0.0.1:5000/ l’application est lancée sur le ``localhost``.   
 
 **Page de connexion Locust**   
 
@@ -373,7 +384,7 @@ Response time percentiles (approximated)
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="tests-coverage"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 #### Tests de couverture de code avec Coverage   
 
@@ -423,7 +434,7 @@ $ pytest --cov=. --cov-report html
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="rapport-flake8"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Rapport avec flake8   
 
@@ -438,7 +449,7 @@ $ flake8
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="informations-importantes"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Informations importantes sur les différents fichiers et dossiers   
 
@@ -482,7 +493,7 @@ $ flake8
 --------------------------------------------------------------------------------------------------------------------------------
 
 <div id="auteur-contact"></div>
-<a href="#top" style="float: right;">Retour en haut ↑</a>
+<a href="#top" style="float: right;">Retour en haut 🡅</a>
 
 ### Auteur et contact   
 

@@ -397,6 +397,7 @@ class TestPurchasePlacesClass:
             "competition": "Test Competition",
             "places": -3
         }, follow_redirects=True)
+
         assert "Please enter a valid number for places." in response.data.decode()
         assert response.status_code == 200
 
@@ -406,6 +407,7 @@ class TestPurchasePlacesClass:
             "competition": "Test Competition",
             "places": "abc"
         }, follow_redirects=True)
+
         assert "Please enter a valid number for places." in response.data.decode()
         assert response.status_code == 200
 
@@ -415,6 +417,7 @@ class TestPurchasePlacesClass:
             "competition": "Test Competition",
             "places": ""
         }, follow_redirects=True)
+
         assert "Please enter a valid number for places." in response.data.decode()
         assert response.status_code == 200
 
@@ -441,6 +444,7 @@ class TestPurchasePlacesClass:
             "competition": "Test Competition",
             "places": 15
         }, follow_redirects=True)
+
         assert "You do not have enough points to make this booking." in response.data.decode()
         assert response.status_code == 200
 

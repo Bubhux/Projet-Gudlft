@@ -1,5 +1,6 @@
 ![Static Badge](static/badges/Build-with-Python.svg) ![Static Badge](static/badges/Build-with-Flask.svg)   
 ![Static Badge](/static/badges/Use-Pytest.svg)   
+![Static Badge](/static/badges/Use-Selenium.svg)   
 ![Static Badge](/static/badges/Use-Locust.svg)   
 
 ![Static Badge](/static/badges/tests-badge.svg)   

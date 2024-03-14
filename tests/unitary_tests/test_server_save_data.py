@@ -36,7 +36,7 @@ def test_saveClubs(mocker):
     # Utilise mocker pour patcher open() avec le mock_open
     mocker.patch('builtins.open', mock_open)
 
-    # Utilise mocker pour patcher json.dump avec votre fonction mockée
+    # Utilise mocker pour patcher json.dump avec la fonction mockée
     mocker.patch('json.dump', side_effect=mocked_json_dump)
 
     # Appele la fonction à tester
@@ -56,7 +56,7 @@ def test_saveCompetitions(mocker):
     # Utilise mocker pour patcher open() avec le mock_open
     mocker.patch('builtins.open', mock_open)
 
-    # Utilise mocker pour patcher json.dump avec votre fonction mockée
+    # Utilise mocker pour patcher json.dump avec la fonction mockée
     mocker.patch('json.dump', side_effect=mocked_json_dump)
 
     # Appele la fonction à tester

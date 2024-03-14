@@ -69,6 +69,9 @@ class TestServerFunctional:
         app.run(host='127.0.0.1', port=5000)
 
     def test_home_page(self, mocker):
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
+
         # Ouvre la page d'accueil
         self.driver.get("http://127.0.0.1:5000/")
 
@@ -80,6 +83,9 @@ class TestServerFunctional:
         time.sleep(3)
 
     def test_display_points_table_clubs(self, mocker):
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
+
         # Ouvre la page d'accueil
         self.driver.get("http://127.0.0.1:5000/")
 
@@ -113,6 +119,9 @@ class TestServerFunctional:
         time.sleep(3)
 
     def test_login_user(self, mocker):
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
+
         # Ouvre la page d'accueil
         self.driver.get("http://127.0.0.1:5000/")
 
@@ -141,6 +150,9 @@ class TestServerFunctional:
         time.sleep(3)
 
     def test_book_places_reservation_success(self, mocker):
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
+
         load_mock_clubs()
         load_mock_competitions()
 
@@ -244,6 +256,9 @@ class TestServerFunctional:
         time.sleep(3)
 
     def test_logout(self, mocker):
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
+
         # Ouvre la page d'accueil
         self.driver.get("http://127.0.0.1:5000/")
 

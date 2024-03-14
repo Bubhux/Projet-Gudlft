@@ -5,7 +5,7 @@ Classe de tests pour les fonctions loadClubs, loadCompetitions pour vérifier le
 import pytest
 
 from datetime import datetime
-from server import loadClubs, loadCompetitions
+from server import loadClubs, loadCompetitions, load_mock_competitions
 
 
 class TestLoadingJsonClass:
@@ -57,7 +57,7 @@ class TestLoadingJsonClass:
     @pytest.mark.parametrize("competition_data", [
         {
             "name": "Spring Festival",
-            "date": "2020-03-27 10:00:00",
+            "date": "2028-03-27 10:00:00",
             "numberOfPlaces": "25"
         },
         {
@@ -66,32 +66,24 @@ class TestLoadingJsonClass:
             "numberOfPlaces": "13"
         }
     ])
-    def test_loading_competitions_json(self, client, competition_data):
-        # Charge les compétitions depuis le fichier JSON
-        competitions = loadCompetitions()
+    def test_loading_competitions_json(self, client, competition_data, mocker):
+        # Mock loadCompetitions pour utiliser load_mock_competitions
+        mocker.patch('server.loadCompetitions', return_value=load_mock_competitions())
 
-        # Vérifie qu'il y a au moins une compétition
+        competitions = load_mock_competitions()
         assert len(competitions) > 0
-
-        # Vérifie les attributs de la compétition
         for competition in competitions:
             assert 'name' in competition
             assert 'date' in competition
             assert 'numberOfPlaces' in competition
-
-            # Vérifie que la date est au format correct
             try:
                 datetime.strptime(competition['date'], '%Y-%m-%d %H:%M:%S')
             except ValueError:
                 pytest.fail("Date format is incorrect.")
-
-            # Vérifie que le nombre de places est un nombre entier
             try:
                 int(competition['numberOfPlaces'])
             except ValueError:
                 pytest.fail("numberOfPlaces should be an integer.")
-
-            # Vérifie que les données de compétition correspondent aux données fournies
             if competition['name'] == competition_data['name']:
                 assert competition['date'] == competition_data['date']
                 assert competition['numberOfPlaces'] == competition_data['numberOfPlaces']

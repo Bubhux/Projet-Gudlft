@@ -216,15 +216,16 @@ $ pytest -v
 ```   
 
 ```bash   
-tests\functional_tests\test_server_functional.py                                              [12%]
-tests\integration_tests\test_server_points_table.py                                           [15%]
-tests\integration_tests\test_server_purchase_places.py                                        [47%]
-tests\unitary_tests\test_server_book.py                                                       [52%]
-tests\unitary_tests\test_server_execption.py                                                  [67%]
-tests\unitary_tests\test_server_loading_json.py                                               [85%]
-tests\unitary_tests\test_server_login.py                                                     [100%]
+tests\functional_tests\test_server_functional.py                                              [11%]
+tests\integration_tests\test_server_points_table.py                                           [14%]
+tests\integration_tests\test_server_purchase_places.py                                        [45%]
+tests\unitary_tests\test_server_book.py                                                       [50%]
+tests\unitary_tests\test_server_exception.py                                                  [64%]
+tests\unitary_tests\test_server_loading_json.py                                               [80%]
+tests\unitary_tests\test_server_login.py                                                      [95%]
+tests\unitary_tests\test_server_save_data.py                                                 [100%]
 
-================================== 40 passed in 85.75s (0:01:25) ==================================
+=================================== 42 passed in 97.09s (0:01:37) =================================
 ```   
 
 --------------------------------------------------------------------------------------------------------------------------------
@@ -397,25 +398,24 @@ $ pytest --cov=.
 ```   
 
 ```bash   
-tests\functional_tests\test_server_functional.py                                              [12%]
-tests\integration_tests\test_server_points_table.py                                           [15%]
-tests\integration_tests\test_server_purchase_places.py                                        [47%]
-tests\unitary_tests\test_server_book.py                                                       [52%]
-tests\unitary_tests\test_server_execption.py                                                  [67%]
-tests\unitary_tests\test_server_loading_json.py                                               [85%]
-tests\unitary_tests\test_server_login.py                                                     [100%]
+tests\functional_tests\test_server_functional.py                                               [11%]
+tests\integration_tests\test_server_points_table.py                                            [14%]
+tests\integration_tests\test_server_purchase_places.py                                         [45%]
+tests\unitary_tests\test_server_book.py                                                        [50%]
+tests\unitary_tests\test_server_exception.py                                                   [64%]
+tests\unitary_tests\test_server_loading_json.py                                                [80%]
+tests\unitary_tests\test_server_login.py                                                       [95%]
+tests\unitary_tests\test_server_save_data.py                                                  [100%]
 
-================================== 40 passed in 85.75s (0:01:25) ==================================
-
------------ coverage: platform win32, python 3.12.0-final-0 -----------
+---------- coverage: platform win32, python 3.12.0-final-0 -----------
 Name        Stmts   Miss  Cover
 -------------------------------
-server.py     143      0   100%
+server.py     161      0   100%
 -------------------------------
-TOTAL         143      0   100%
+TOTAL         161      0   100%
 
 
-============================================= 40 passed in 86.40s (0:01:26) =======================
+================================= 42 passed in 103.20s (0:01:43) =================================
 ```   
 
 Renvoie : **100%** de couverture de code.   

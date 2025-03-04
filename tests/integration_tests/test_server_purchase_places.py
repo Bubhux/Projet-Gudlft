@@ -72,6 +72,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="You do not have enough points to make this booking.")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         # Accés aux compétitions et aux clubs directement depuis les objets de fixture
         competition = test_competitions[competition_index]
@@ -101,6 +103,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Competition not found.")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         # Accés aux compétitions et aux clubs directement depuis les objets de fixture
         competition = test_competitions[competition_index]
@@ -130,6 +134,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="The competition has already passed.")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         # Accés aux compétitions et aux clubs directement depuis les objets de fixture
         competition = test_competitions[competition_index]
@@ -159,6 +165,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="The competition is already full.")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         # Accés aux compétitions et aux clubs directement depuis les objets de fixture
         competition = test_competitions[competition_index]
@@ -188,6 +196,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Please enter a valid number for places.")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         # Accés aux compétitions et aux clubs directement depuis les objets de fixture
         competition = test_competitions[competition_index]
@@ -217,6 +227,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="You can book a maximum of 12 athletes at once.")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         # Accés aux compétitions et aux clubs directement depuis les objets de fixture
         competition = test_competitions[competition_index]
@@ -246,6 +258,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Great-booking complete!")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         # Accés aux compétitions et aux clubs directement depuis les objets de fixture
         competition = test_competitions[competition_index]
@@ -275,6 +289,8 @@ class TestPurchasePlacesClass:
     ):
         # Mock de la fonction 'render_template' pour simuler le comportement de l'application
         mocker.patch('server.render_template', return_value="Great-booking complete!")
+        mocker.patch('server.saveClubs')  # Mock de la fonction saveClubs
+        mocker.patch('server.saveCompetitions')  # Mock de la fonction saveCompetitions
 
         places_input = "5"
 
@@ -335,6 +351,10 @@ class TestPurchasePlacesClass:
             }
         ])
 
+        # Patch saveClubs et saveCompetitions pour empêcher leur appel
+        mocker.patch('server.saveClubs')
+        mocker.patch('server.saveCompetitions')
+
         # Utilise l'objet client Flask pour effectuer la requête POST
         response = client.post('/purchasePlaces', data={
             "club": "Test Club",
@@ -362,6 +382,10 @@ class TestPurchasePlacesClass:
                 "numberOfPlaces": "20"
             }
         ])
+
+        # Patch saveClubs et saveCompetitions pour empêcher leur appel
+        mocker.patch('server.saveClubs')
+        mocker.patch('server.saveCompetitions')
 
         # Utilise l'objet client Flask pour effectuer la requête POST
         response = client.post('/purchasePlaces', data={
@@ -391,12 +415,17 @@ class TestPurchasePlacesClass:
             }
         ])
 
+        # Patch saveClubs et saveCompetitions pour empêcher leur appel
+        mocker.patch('server.saveClubs')
+        mocker.patch('server.saveCompetitions')
+
         # Utilise l'objet client Flask pour effectuer la requête POST
         response = client.post('/purchasePlaces', data={
             "club": "Test Club",
             "competition": "Test Competition",
             "places": -3
         }, follow_redirects=True)
+
         assert "Please enter a valid number for places." in response.data.decode()
         assert response.status_code == 200
 
@@ -406,6 +435,7 @@ class TestPurchasePlacesClass:
             "competition": "Test Competition",
             "places": "abc"
         }, follow_redirects=True)
+
         assert "Please enter a valid number for places." in response.data.decode()
         assert response.status_code == 200
 
@@ -415,6 +445,7 @@ class TestPurchasePlacesClass:
             "competition": "Test Competition",
             "places": ""
         }, follow_redirects=True)
+
         assert "Please enter a valid number for places." in response.data.decode()
         assert response.status_code == 200
 
@@ -435,12 +466,17 @@ class TestPurchasePlacesClass:
             }
         ])
 
+        # Patch saveClubs et saveCompetitions pour empêcher leur appel
+        mocker.patch('server.saveClubs')
+        mocker.patch('server.saveCompetitions')
+
         # Utilise l'objet client Flask pour effectuer la requête POST
         response = client.post('/purchasePlaces', data={
             "club": "Test Club",
             "competition": "Test Competition",
             "places": 15
         }, follow_redirects=True)
+
         assert "You do not have enough points to make this booking." in response.data.decode()
         assert response.status_code == 200
 
@@ -460,6 +496,10 @@ class TestPurchasePlacesClass:
                 "numberOfPlaces": "25"
             }
         ])
+
+        # Patch saveClubs et saveCompetitions pour empêcher leur appel
+        mocker.patch('server.saveClubs')
+        mocker.patch('server.saveCompetitions')
 
         # Utilise l'objet client Flask pour effectuer la requête POST
         response = client.post('/purchasePlaces', data={

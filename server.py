@@ -118,6 +118,18 @@ def loadCompetitions():
         return None
 
 
+def saveClubs(clubs):
+    filename = 'clubs.json'
+    with open(filename, 'w') as c:
+        json.dump({'clubs': clubs}, c, indent=4)
+
+
+def saveCompetitions(competitions):
+    filename = 'competitions.json'
+    with open(filename, 'w') as comps:
+        json.dump({'competitions': competitions}, comps, indent=4)
+
+
 # Créer une instance de l'application Flask.
 app = Flask(__name__)
 app.secret_key = 'something_special'
@@ -232,6 +244,13 @@ def purchasePlaces():
         competition['numberOfPlaces'] = str(competition_places)
         club['points'] = str(club_points)
 
+        # Sauvegarde les données mises à jour dans les fichiers JSON
+        saveClubs(clubs)
+        saveCompetitions(competitions)
+
+        # Mettre à jour la session du club après avoir effectué une réservation
+        session['club'] = club
+
         flash('Great-booking complete!')
         return render_template('welcome.html', club=club, competitions=competitions)
 
@@ -262,6 +281,9 @@ def purchasePlaces():
 
 @app.route('/displayPointsClubs')
 def display_points_clubs():
+    # Recharge les données des clubs après les avoir mises à jour
+    global clubs
+    clubs = loadClubs()
     clubs_list = sorted(clubs, key=lambda club: club['name'])
     return render_template('points_table_clubs.html', clubs=clubs_list)
 
